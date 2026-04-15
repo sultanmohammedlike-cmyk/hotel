@@ -133,18 +133,18 @@
       flex-wrap:wrap;
     }
     .logo-area{display:flex;align-items:center;gap:0.9rem;text-decoration:none;}
-    /* 👇 BIGGER LOGO (increased height) */
-    .logo-img{height:100px;width:auto;object-fit:contain;border-radius:50%;}
+    /* ✅ BIGGER LOGO */
+    .logo-img{height:120px;width:auto;object-fit:contain;border-radius:50%;}
     .brand-text h1{
       font-family:'Playfair Display',serif;
-      /* 👇 BIGGER TEXT */
-      font-size:clamp(1.3rem,4.5vw,1.9rem);
+      /* ✅ BIGGER NAV BRAND TEXT */
+      font-size:clamp(1.6rem,5vw,2.3rem);
       color:var(--saffron-deep);
       font-weight:900;
       line-height:1.1;
     }
-    /* 👇 slightly bigger subtitle */
-    .brand-text p{font-size:0.82rem;color:var(--text-muted);font-weight:600;margin-top:2px;}
+    /* ✅ BIGGER SUBTITLE */
+    .brand-text p{font-size:1rem;color:var(--text-muted);font-weight:700;margin-top:4px;}
     .nav-address{
       display:flex;
       align-items:center;
@@ -152,16 +152,17 @@
       background:var(--gold-light);
       border:1px solid var(--border);
       border-radius:var(--radius-full);
-      padding:0.45rem 1rem;
-      font-size:0.78rem;
+      padding:0.5rem 1.1rem;
+      /* ✅ BIGGER ADDRESS TEXT */
+      font-size:0.92rem;
       color:var(--text-mid);
-      font-weight:600;
+      font-weight:700;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
-      max-width:300px;
+      max-width:340px;
     }
-    .nav-address i{color:var(--saffron);font-size:0.85rem;flex-shrink:0;}
+    .nav-address i{color:var(--saffron);font-size:1rem;flex-shrink:0;}
 
     /* HERO TICKER */
     .hero-ticker{
@@ -169,9 +170,10 @@
       background-size:300% auto;
       animation:shimmer 5s linear infinite;
       color:white;
-      padding:0.55rem 1rem;
+      padding:0.65rem 1rem;
       text-align:center;
-      font-size:0.82rem;
+      /* ✅ BIGGER TICKER */
+      font-size:0.95rem;
       font-weight:bold;
       letter-spacing:0.4px;
       overflow:hidden;
@@ -209,37 +211,40 @@
     }
     .catering-left{display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;}
     .catering-icon{
-      width:42px;
-      height:42px;
+      width:48px;
+      height:48px;
       border-radius:var(--radius-sm);
       background:var(--saffron-light);
       display:flex;
       align-items:center;
       justify-content:center;
       color:var(--saffron);
-      font-size:1.1rem;
+      font-size:1.3rem;
       flex-shrink:0;
     }
-    .catering-info strong{display:block;font-size:0.92rem;color:var(--text-dark);font-weight:bold;}
-    .catering-info span{font-size:0.75rem;color:var(--text-muted);font-weight:500;}
+    /* ✅ BIGGER CATERING INFO TEXT */
+    .catering-info strong{display:block;font-size:1.05rem;color:var(--text-dark);font-weight:800;}
+    .catering-info span{font-size:0.88rem;color:var(--text-muted);font-weight:600;}
     .catering-pills{display:flex;flex-wrap:wrap;gap:0.45rem;}
+    /* ✅ BIGGER PILLS TEXT */
     .c-pill{
       background:var(--cream-dark);
       border:1px solid var(--border);
       border-radius:var(--radius-full);
-      padding:0.2rem 0.7rem;
-      font-size:0.72rem;
+      padding:0.25rem 0.85rem;
+      font-size:0.84rem;
       color:var(--text-mid);
-      font-weight:bold;
+      font-weight:800;
     }
+    /* ✅ BIGGER CATERING CTA BUTTON */
     .catering-cta{
       background:var(--saffron);
       color:white;
       border:none;
       border-radius:var(--radius-full);
-      padding:0.55rem 1.3rem;
-      font-size:0.82rem;
-      font-weight:bold;
+      padding:0.7rem 1.6rem;
+      font-size:1rem;
+      font-weight:800;
       cursor:pointer;
       display:flex;
       align-items:center;
@@ -258,7 +263,7 @@
     }
     .section-heading h2{
       font-family:'Playfair Display',serif;
-      font-size:clamp(1.2rem,3vw,1.6rem);
+      font-size:clamp(1.4rem,3.5vw,1.9rem);
       color:var(--text-dark);
       font-weight:bold;
     }
@@ -293,24 +298,26 @@
       background:linear-gradient(to top,rgba(30,10,0,0.45) 0%,transparent 60%);
     }
     .card-body{padding:0.65rem 0.7rem 0.75rem;}
+    /* ✅ BIGGER CATEGORY CARD NAME */
     .card-body h3{
       font-family:'Playfair Display',serif;
-      font-size:0.82rem;
+      font-size:0.95rem;
       color:var(--text-dark);
-      font-weight:bold;
+      font-weight:800;
       line-height:1.25;
       margin-bottom:0.35rem;
     }
+    /* ✅ BIGGER CARD TIMING */
     .card-timing{
       display:inline-flex;
       align-items:center;
       gap:0.3rem;
       background:var(--cream-dark);
       border-radius:var(--radius-full);
-      padding:0.15rem 0.55rem;
-      font-size:0.63rem;
+      padding:0.2rem 0.6rem;
+      font-size:0.72rem;
       color:var(--text-muted);
-      font-weight:bold;
+      font-weight:800;
     }
 
     .menu-panel{
@@ -336,7 +343,7 @@
     }
     .menu-header h2{
       font-family:'Playfair Display',serif;
-      font-size:clamp(1.1rem,3.5vw,1.5rem);
+      font-size:clamp(1.2rem,3.5vw,1.6rem);
       color:var(--saffron-deep);
       font-weight:bold;
       border-left:5px solid var(--saffron);
@@ -346,10 +353,11 @@
       background:var(--gold-light);
       border:1px solid #e8c97a;
       border-radius:var(--radius-full);
-      padding:0.3rem 0.9rem;
-      font-size:0.72rem;
+      padding:0.35rem 1rem;
+      /* ✅ BIGGER TIMING TAG */
+      font-size:0.85rem;
       color:var(--saffron-deep);
-      font-weight:bold;
+      font-weight:800;
       white-space:nowrap;
     }
     .items-grid{
@@ -369,25 +377,28 @@
       transition:all 0.2s ease;
     }
     .menu-item:hover{border-color:var(--saffron);box-shadow:var(--shadow-sm);}
+    /* ✅ BIGGER ITEM NAME */
     .item-name{
-      font-size:0.88rem;
-      font-weight:700 !important;
+      font-size:1rem;
+      font-weight:800 !important;
       color:var(--text-dark);
     }
+    /* ✅ BIGGER + BOLDER PRICE */
     .item-price{
-      font-size:0.9rem;
-      font-weight:bold !important;
+      font-size:1.1rem;
+      font-weight:900 !important;
       color:var(--saffron);
       letter-spacing:-0.2px;
     }
+    /* ✅ BIGGER ADD BUTTON */
     .add-btn{
       background:var(--saffron);
       color:white;
       border:none;
       border-radius:var(--radius-full);
-      padding:0.38rem 0.9rem;
-      font-size:0.78rem;
-      font-weight:bold;
+      padding:0.5rem 1.1rem;
+      font-size:0.92rem;
+      font-weight:800;
       cursor:pointer;
       transition:all 0.15s;
     }
@@ -419,25 +430,28 @@
     }
     .cart-badge{
       background:var(--saffron);
-      width:26px;
-      height:26px;
+      width:30px;
+      height:30px;
       border-radius:50%;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:0.75rem;
-      font-weight:bold;
+      /* ✅ BIGGER BADGE */
+      font-size:0.9rem;
+      font-weight:800;
     }
-    .cart-summary{font-size:0.85rem;font-weight:600;opacity:0.92;}
-    .cart-total{font-size:0.88rem;font-weight:bold;color:var(--saffron-light);}
+    /* ✅ BIGGER CART TEXT */
+    .cart-summary{font-size:1rem;font-weight:700;opacity:0.92;}
+    .cart-total{font-size:1rem;font-weight:800;color:var(--saffron-light);}
+    /* ✅ BIGGER CART CTA BUTTON */
     .cart-cta-btn{
       background:var(--green-wa);
       color:white;
       border:none;
       border-radius:var(--radius-full);
-      padding:0.55rem 1.2rem;
-      font-size:0.82rem;
-      font-weight:bold;
+      padding:0.65rem 1.4rem;
+      font-size:0.95rem;
+      font-weight:800;
       cursor:pointer;
       display:flex;
       align-items:center;
@@ -468,10 +482,11 @@
       .modal-overlay{justify-content:center;align-items:center;}
       .modal-sheet{border-radius:var(--radius-lg);max-height:88vh;}
     }
+    /* ✅ BIGGER MODAL TITLE */
     .modal-title{
       font-family:'Playfair Display',serif;
-      font-size:1.3rem;
-      font-weight:bold;
+      font-size:1.6rem;
+      font-weight:800;
     }
     .bill-box{
       background:var(--cream);
@@ -480,12 +495,15 @@
       margin:1rem 0;
       border:1px solid var(--border);
     }
-    .bill-row{display:flex;justify-content:space-between;padding:0.3rem 0;font-weight:600;}
-    .bill-total-row{border-top:2px dashed var(--border);padding-top:0.6rem;margin-top:0.4rem;font-size:1.05rem;font-weight:bold;color:var(--text-dark);}
+    /* ✅ BIGGER BILL TEXT */
+    .bill-row{display:flex;justify-content:space-between;padding:0.35rem 0;font-size:1rem;font-weight:700;}
+    .bill-total-row{border-top:2px dashed var(--border);padding-top:0.7rem;margin-top:0.5rem;font-size:1.15rem;font-weight:800;color:var(--text-dark);}
+    /* ✅ BIGGER ACTION BUTTONS */
     .btn-upi,.btn-whatsapp{
       width:100%;
-      padding:0.85rem;
-      font-weight:bold;
+      padding:1rem;
+      font-size:1rem;
+      font-weight:800;
       border-radius:var(--radius-full);
       display:flex;
       align-items:center;
@@ -494,17 +512,19 @@
       cursor:pointer;
       transition:all 0.15s;
     }
-    .btn-upi{background:#5f259f;color:white;}
+    .btn-upi{background:#5f259f;color:white;border:none;}
     .btn-upi:hover{background:#4a1a80;}
-    .btn-whatsapp{background:var(--green-wa);color:white;}
+    .btn-whatsapp{background:var(--green-wa);color:white;border:none;}
     .btn-whatsapp:hover{background:#1ea355;}
+    /* ✅ BIGGER GET LOCATION BUTTON */
     .get-loc-btn{
       width:100%;
       background:transparent;
       border:1.5px solid var(--saffron);
       border-radius:var(--radius-full);
-      padding:0.6rem;
-      font-weight:bold;
+      padding:0.75rem;
+      font-size:0.98rem;
+      font-weight:800;
       margin-bottom:0.8rem;
       cursor:pointer;
       color:var(--saffron);
@@ -519,11 +539,12 @@
       border-bottom:1px solid var(--border);
       flex-wrap:wrap;
     }
-    .cir-name{font-size:0.88rem;font-weight:bold;color:var(--text-dark);}
-    .cir-price{font-size:0.88rem;font-weight:bold;color:var(--saffron);}
+    /* ✅ BIGGER CART ITEM NAME & PRICE */
+    .cir-name{font-size:1rem;font-weight:800;color:var(--text-dark);}
+    .cir-price{font-size:1rem;font-weight:800;color:var(--saffron);}
     .qty-btn{
-      width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);
-      background:var(--cream);cursor:pointer;font-weight:bold;
+      width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border);
+      background:var(--cream);cursor:pointer;font-weight:800;font-size:1rem;
     }
     .qty-btn:hover{background:var(--saffron-light);border-color:var(--saffron);}
 
@@ -538,12 +559,12 @@
     .footer-brand{margin-bottom:1.5rem;}
     .footer-brand h3{
       font-family:'Playfair Display',serif;
-      font-size:1.3rem;
+      font-size:1.5rem;
       color:var(--saffron-light);
-      font-weight:bold;
+      font-weight:800;
       margin-bottom:0.4rem;
     }
-    .footer-brand p{font-size:0.8rem;opacity:0.7;line-height:1.6;}
+    .footer-brand p{font-size:0.9rem;opacity:0.7;line-height:1.6;}
     .footer-grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -551,16 +572,15 @@
       padding:1.5rem 0;
       border-top:1px solid rgba(255,255,255,0.1);
     }
-    .footer-col h4{font-size:0.78rem;font-weight:bold;color:var(--saffron-light);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:0.7rem;}
-    .footer-col p,.footer-col a{font-size:0.8rem;opacity:0.7;line-height:1.8;display:block;text-decoration:none;color:inherit;}
+    .footer-col h4{font-size:0.88rem;font-weight:800;color:var(--saffron-light);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:0.7rem;}
+    .footer-col p,.footer-col a{font-size:0.88rem;opacity:0.7;line-height:1.8;display:block;text-decoration:none;color:inherit;}
     .footer-col a:hover{opacity:1;color:var(--saffron-light);}
-    .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1rem;margin-top:1rem;font-size:0.72rem;opacity:0.5;text-align:center;}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1rem;margin-top:1rem;font-size:0.78rem;opacity:0.5;text-align:center;}
 
     @media(max-width:420px){
-      /* keep logo big but adjust slightly for small screens */
-      .logo-img{height:75px;}
-      .brand-text h1{font-size:1.2rem;}
-      .brand-text p{font-size:0.7rem;}
+      .logo-img{height:85px;}
+      .brand-text h1{font-size:1.4rem;}
+      .brand-text p{font-size:0.85rem;}
       .nav-address{display:none;}
       .catering-pills{display:none;}
       .categories-grid{grid-template-columns:repeat(2,1fr);gap:0.65rem;}
@@ -635,17 +655,16 @@
   </footer>
 </div>
 
-<div class="cart-bar" id="cartBar" style="display:none;"><div class="cart-bar-inner"><div class="cart-info-left"><div class="cart-badge" id="cartCount">0</div><div><div class="cart-summary" id="cartSummaryText">items in cart</div><div class="cart-total">₹<span id="cartTotalPreview">0</span></div></div></div><button class="cart-cta-btn" id="goToCartBtn"><i class="fab fa-whatsapp"></i> View Order</button></div></div>
+<div class="cart-bar" id="cartBar" style="display:none;"><div class="cart-bar-inner"><div class="cart-info-left" style="display:flex;align-items:center;gap:0.7rem;"><div class="cart-badge" id="cartCount">0</div><div><div class="cart-summary" id="cartSummaryText">items in cart</div><div class="cart-total">₹<span id="cartTotalPreview">0</span></div></div></div><button class="cart-cta-btn" id="goToCartBtn"><i class="fab fa-whatsapp"></i> View Order</button></div></div>
 
-<div class="modal-overlay" id="orderModal"><div class="modal-sheet"><div class="modal-handle"></div><div class="modal-title-row"><div class="modal-title">Your Order</div><button class="close-modal" id="closeModalBtn"><i class="fas fa-times"></i></button></div><div id="modalCartItems"></div><div class="bill-box" id="billBox" style="display:none;"><div class="bill-row"><span>Subtotal</span><span>₹<span id="modalSubtotal">0</span></span></div><div class="bill-row"><span>Delivery charge</span><span>₹30</span></div><div class="bill-row bill-total-row"><span>Grand Total</span><span>₹<span id="modalGrandTotal">0</span></span></div></div><div class="location-section"><div class="loc-label"><i class="fas fa-map-marker-alt"></i> Delivery Location</div><button class="get-loc-btn" id="getLiveLocationBtn"><i class="fas fa-crosshairs"></i> <span id="locBtnText">Capture My Live Location</span></button><div id="map"><div class="map-placeholder"><i class="fas fa-map"></i><p>Tap above to show your location</p></div></div><div class="loc-address" id="locationAddress">📍 Location not captured yet</div></div><div class="action-btns"><button class="btn-upi" id="upiPaymentBtn"><i class="fas fa-mobile-alt"></i> Pay via UPI (PhonePe / GPay)</button><button class="btn-whatsapp" id="sendWhatsAppBtn"><i class="fab fa-whatsapp"></i> Confirm & Send on WhatsApp</button><p class="order-note">UPI payment with exact bill amount · Or send order details via WhatsApp</p></div></div></div>
+<div class="modal-overlay" id="orderModal"><div class="modal-sheet"><div class="modal-handle"></div><div class="modal-title-row" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;"><div class="modal-title">Your Order</div><button class="close-modal" id="closeModalBtn" style="background:var(--cream-dark);border:1.5px solid var(--border);border-radius:50%;width:36px;height:36px;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;"><i class="fas fa-times"></i></button></div><div id="modalCartItems"></div><div class="bill-box" id="billBox" style="display:none;"><div class="bill-row"><span>Subtotal</span><span>₹<span id="modalSubtotal">0</span></span></div><div class="bill-row"><span>Delivery charge</span><span>₹30</span></div><div class="bill-row bill-total-row"><span>Grand Total</span><span>₹<span id="modalGrandTotal">0</span></span></div></div><div class="location-section" style="margin:1rem 0;"><div class="loc-label" style="font-size:0.95rem;font-weight:800;color:var(--text-mid);margin-bottom:0.6rem;"><i class="fas fa-map-marker-alt"></i> Delivery Location</div><button class="get-loc-btn" id="getLiveLocationBtn"><i class="fas fa-crosshairs"></i> <span id="locBtnText">Capture My Live Location</span></button><div id="map" style="border-radius:var(--radius-md);overflow:hidden;margin-bottom:0.6rem;"><div class="map-placeholder" style="background:var(--cream-dark);padding:2rem;text-align:center;border-radius:var(--radius-md);border:1px dashed var(--border);"><i class="fas fa-map" style="font-size:2rem;color:var(--text-muted);"></i><p style="color:var(--text-muted);font-size:0.9rem;margin-top:0.5rem;">Tap above to show your location</p></div></div><div class="loc-address" id="locationAddress" style="font-size:0.88rem;color:var(--text-mid);font-weight:600;">📍 Location not captured yet</div></div><div class="action-btns" style="display:flex;flex-direction:column;gap:0.7rem;margin-top:1rem;"><button class="btn-upi" id="upiPaymentBtn"><i class="fas fa-mobile-alt"></i> Pay via UPI (PhonePe / GPay)</button><button class="btn-whatsapp" id="sendWhatsAppBtn"><i class="fab fa-whatsapp"></i> Confirm & Send on WhatsApp</button><p style="font-size:0.8rem;color:var(--text-muted);text-align:center;font-weight:600;">UPI payment with exact bill amount · Or send order details via WhatsApp</p></div></div></div>
 
 <script>
-  // COMPLETE MENU DATA (all categories from original)
   const categoriesData = [
     {name:"HOT BEVERAGES",timing:"7:00 am–12:00 pm | 4:00 pm–8:00 pm",cover:"https://images.unsplash.com/photo-1541167760496-1628856ab772?w=400&h=250&fit=crop",items:[{name:"Coffee / Tea",price:15},{name:"Badam Milk",price:20},{name:"Bournvita / Boost",price:20},{name:"Horlicks",price:20},{name:"Lemon Tea",price:15}]},
     {name:"BREAKFAST",timing:"6:00 am–4:00 pm",cover:"https://images.unsplash.com/photo-1680359871322-aabe6b33eff5?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",items:[{name:"1 IDLY",price:20},{name:"2 IDLY",price:40},{name:"2 IDLY 1 VADA",price:60},{name:"1 IDLY 1 VADA",price:45},{name:"SINGLE VADA",price:25},{name:"KARA BATH",price:30},{name:"KESARI BATH",price:30},{name:"CHOW CHOW BATH",price:60},{name:"RICE BATH",price:50},{name:"POORI 2",price:60},{name:"RAVA IDLY 1",price:35},{name:"PONGAL",price:60},{name:"BISI BELE BATH",price:60},{name:"CURD VADA",price:30},{name:"MANGALORE BUN 1",price:25},{name:"BONDA SOUP",price:25},{name:"BAJJI / VADA",price:15}]},
     {name:"CHOICE OF DOSA",timing:"7:00 am–12:00 pm | 4:00 pm–8:00 pm",cover:"https://images.unsplash.com/photo-1694849789325-914b71ab4075?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",items:[{name:"BUTTER MASALA DOSA",price:90},{name:"MASALA DOSA",price:70},{name:"PLAIN DOSA",price:50},{name:"ONION DOSA",price:90},{name:"SET DOSA",price:60},{name:"PAPER MASALA DOSA",price:130},{name:"PAPER PLAIN DOSA",price:100},{name:"RAGI DOSA 2 PS",price:60},{name:"RAVA DOSA",price:70},{name:"RAVA MASALA DOSA",price:80},{name:"NEER DOSA",price:60},{name:"OPEN BUTTER M. DOSA",price:100},{name:"BUTTER PLAIN DOSA",price:70},{name:"GHEE MASALA DOSA",price:90},{name:"BUTTER SET DOSA",price:80},{name:"RAVA ONION DOSA",price:80},{name:"SET MASALA DOSA",price:80},{name:"BUTTER SET MASALA DOSA",price:100},{name:"SINGLE SET MASALA DOSA",price:45},{name:"SINGLE BUTTER SET MASALA DOSA",price:55}]},
-    {name:"MEALS",timing:"South: 12pm–4pm , North:12pm-4pm | 7pm-10pm", cover:"https://images.unsplash.com/photo-1742281257687-092746ad6021?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" ,    items:[{name:"SOUTH MEALS",price:100},{name:"NORTH MEALS",price:130}]},
+    {name:"MEALS",timing:"South: 12pm–4pm , North:12pm-4pm | 7pm-10pm",cover:"https://images.unsplash.com/photo-1742281257687-092746ad6021?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",items:[{name:"SOUTH MEALS",price:100},{name:"NORTH MEALS",price:130}]},
     {name:"EVENING SPECIAL",timing:"4:00 pm onwards",cover:"https://images.unsplash.com/photo-1756757077703-26dc3ba7e853?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",items:[{name:"SABBAKKI IDLY",price:35},{name:"SHAVIGE",price:60},{name:"KARABATH (SPECIAL)",price:35},{name:"AVALAKKI UPMA",price:50}]},
     {name:"SOUPS",timing:"12:00pm-10pm",cover:"https://images.unsplash.com/photo-1613844237701-8f3664fc2eff?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",items:[{name:"TOMATO SOUP",price:60},{name:"CREAM OF VEG",price:70},{name:"CREAM OF MUSHROOM",price:70},{name:"SWEET CORN SOUP",price:60},{name:"HOT AND SOUR",price:70},{name:"VEG SOUP",price:60},{name:"LEMON KOREAN",price:80},{name:"MANCHOW SOUP",price:70},{name:"SWEET CORN VEG SOUP",price:70}]},
     {name:"STARTERS",timing:"12:00 pm–10:30 pm",cover:"https://images.unsplash.com/photo-1690401767645-595de0e0e5f8?q=80&w=1313&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",items:[{name:"GOBI MANCHURIAN",price:80},{name:"GOBI CHILLY",price:90},{name:"GOBI PEPPER DRY",price:100},{name:"GOBI 65",price:100},{name:"BABY CORN MANCHURIAN",price:100},{name:"BABY CORN CHILLY",price:120},{name:"BABY CORN PEPPER DRY",price:130},{name:"BABY CORN 65",price:130},{name:"MUSHROOM MANCHURIAN",price:110},{name:"MUSHROOM CHILLY",price:120},{name:"MUSHROOM PEPPER DRY",price:130},{name:"MUSHROOM 65",price:130},{name:"PANEER MANCHURIAN",price:130},{name:"PANEER CHILLY",price:140},{name:"PANEER PEPPER DRY",price:150},{name:"PANEER 65",price:150},{name:"ALOO MANCHURIAN",price:100},{name:"ALOO CHILLY",price:110},{name:"ALOO 65",price:120},{name:"MASALA PAPAD",price:40},{name:"FINGER CHIPS",price:70},{name:"VEG BALL MANCHURIAN",price:150},{name:"SPANISH MANCHURIAN",price:150},{name:"PALAK GOBI",price:140}]},
@@ -676,7 +695,7 @@
     cat.items.forEach(item => {
       const div = document.createElement('div');
       div.className = 'menu-item';
-      div.innerHTML = `<div><div class="item-name">${item.name}</div><div class="item-price" style="font-weight:bold !important;">₹${item.price}</div></div><button class="add-btn">+ Add</button>`;
+      div.innerHTML = `<div><div class="item-name">${item.name}</div><div class="item-price">₹${item.price}</div></div><button class="add-btn">+ Add</button>`;
       div.querySelector('.add-btn').addEventListener('click', (e) => { e.stopPropagation(); addToCart(cat.name, item.name, item.price); e.target.textContent = '✓ Added'; e.target.classList.add('added'); setTimeout(() => { e.target.textContent = '+ Add'; e.target.classList.remove('added'); }, 800); });
       cont.appendChild(div);
     });
@@ -687,14 +706,14 @@
   function addToCart(cat, name, price) { let ex = cart.find(i => i.name === name && i.cat === cat); if (ex) ex.qty++; else cart.push({ cat, name, price, qty: 1 }); updateCartBar(); }
   function getTotal() { return cart.reduce((s,i)=>s+i.price*i.qty,0); }
   function updateCartBar() { let t = cart.reduce((s,i)=>s+i.qty,0); let bar = document.getElementById('cartBar'); if(t===0){bar.style.display='none';return;} bar.style.display='block'; document.getElementById('cartCount').textContent=t; document.getElementById('cartSummaryText').textContent=t===1?'item in cart':'items in cart'; document.getElementById('cartTotalPreview').textContent=getTotal(); refreshModal(); }
-  function refreshModal() { let cont = document.getElementById('modalCartItems'); let bill = document.getElementById('billBox'); if(cart.length===0){cont.innerHTML='<div class="empty-cart"><i class="fas fa-shopping-bag"></i><p>Your cart is empty.<br>Browse the menu and add items!</p></div>';bill.style.display='none';return;} bill.style.display='block'; let html=''; cart.forEach((item,idx)=>{html+=`<div class="cart-item-row"><div><div class="cir-name">${item.name}</div><div class="cir-cat" style="font-size:0.7rem;color:var(--text-muted);">${item.cat}</div></div><div class="qty-ctrl"><button class="qty-btn" data-idx="${idx}" data-act="dec">−</button><span class="qty-num" style="min-width:20px;text-align:center;font-weight:bold;">${item.qty}</span><button class="qty-btn" data-idx="${idx}" data-act="inc">+</button><button class="qty-btn qty-del" data-idx="${idx}" data-act="del">🗑</button></div><div class="cir-price">₹${item.price*item.qty}</div></div>`;}); cont.innerHTML=html; let sub=getTotal(); document.getElementById('modalSubtotal').textContent=sub; document.getElementById('modalGrandTotal').textContent=sub+30; cont.querySelectorAll('.qty-btn').forEach(btn=>{btn.addEventListener('click',()=>{let idx=parseInt(btn.dataset.idx); if(btn.dataset.act==='inc')cart[idx].qty++; else if(btn.dataset.act==='dec'){if(cart[idx].qty>1)cart[idx].qty--; else cart.splice(idx,1);} else if(btn.dataset.act==='del')cart.splice(idx,1); updateCartBar();});}); }
+  function refreshModal() { let cont = document.getElementById('modalCartItems'); let bill = document.getElementById('billBox'); if(cart.length===0){cont.innerHTML='<div style="text-align:center;padding:2rem;color:var(--text-muted);"><i class="fas fa-shopping-bag" style="font-size:2rem;"></i><p style="margin-top:0.5rem;font-size:0.95rem;font-weight:600;">Your cart is empty.<br>Browse the menu and add items!</p></div>';bill.style.display='none';return;} bill.style.display='block'; let html=''; cart.forEach((item,idx)=>{html+=`<div class="cart-item-row"><div><div class="cir-name">${item.name}</div><div style="font-size:0.78rem;color:var(--text-muted);font-weight:600;">${item.cat}</div></div><div style="display:flex;align-items:center;gap:0.4rem;"><button class="qty-btn" data-idx="${idx}" data-act="dec">−</button><span style="min-width:22px;text-align:center;font-size:1rem;font-weight:800;">${item.qty}</span><button class="qty-btn" data-idx="${idx}" data-act="inc">+</button><button class="qty-btn qty-del" data-idx="${idx}" data-act="del">🗑</button></div><div class="cir-price">₹${item.price*item.qty}</div></div>`;}); cont.innerHTML=html; let sub=getTotal(); document.getElementById('modalSubtotal').textContent=sub; document.getElementById('modalGrandTotal').textContent=sub+30; cont.querySelectorAll('.qty-btn').forEach(btn=>{btn.addEventListener('click',()=>{let idx=parseInt(btn.dataset.idx); if(btn.dataset.act==='inc')cart[idx].qty++; else if(btn.dataset.act==='dec'){if(cart[idx].qty>1)cart[idx].qty--; else cart.splice(idx,1);} else if(btn.dataset.act==='del')cart.splice(idx,1); updateCartBar();});}); }
   document.getElementById('goToCartBtn').addEventListener('click',()=>{refreshModal();document.getElementById('orderModal').classList.add('open');});
   document.getElementById('closeModalBtn').addEventListener('click',()=>document.getElementById('orderModal').classList.remove('open'));
   document.getElementById('upiPaymentBtn').addEventListener('click',()=>{if(cart.length)window.location.href=`upi://pay?pa=9964054005@ybl&pn=Shree%20Srinidhi%20Upachar&am=${getTotal()+30}&cu=INR`; else alert('Cart empty');});
 
   let currentLat=null, currentLng=null, currentAddress="Not captured yet", googleMapsLink="";
   document.getElementById('sendWhatsAppBtn').addEventListener('click',()=>{if(!cart.length)return alert('Cart empty'); if(!currentLat){alert('Please capture your live location first.');return;} let msg=`🍽️ *SHREE SRINIDHI UPACHAR* 🍽️\n📍 #10/3591, Opp. Bus Stand, Mysore Road, Kollegal\n\n*YOUR ORDER:*\n`; cart.forEach(i=>msg+=`• ${i.name} ×${i.qty} = ₹${i.price*i.qty}\n`); let sub=getTotal(); msg+=`\nSubtotal: ₹${sub}\nDelivery: ₹30\n*TOTAL: ₹${sub+30}*\n\n📍 *Delivery Address:* ${currentAddress}\n\n📍 *Live Location (Google Maps):* ${googleMapsLink}\n\n🙏 Thank you!`; window.open(`https://wa.me/919964054005?text=${encodeURIComponent(msg)}`,'_blank');});
-  document.getElementById('getLiveLocationBtn').addEventListener('click',function(){if(!navigator.geolocation)return alert('Geolocation not supported'); this.classList.add('loading'); document.getElementById('locBtnText').textContent='Getting location…'; navigator.geolocation.getCurrentPosition(pos=>{currentLat=pos.coords.latitude; currentLng=pos.coords.longitude; googleMapsLink=`https://www.google.com/maps?q=${currentLat},${currentLng}`; document.getElementById('locBtnText').textContent='Location Captured ✓'; let mapDiv=document.getElementById('map'); mapDiv.innerHTML=`<div class="map-placeholder" style="cursor:pointer;" onclick="window.open('${googleMapsLink}', '_blank')"><i class="fas fa-map-marker-alt" style="color:#c85f1a; font-size:2rem;"></i><p>📍 Tap to open Google Maps</p><small style="font-size:11px">${currentLat.toFixed(5)}, ${currentLng.toFixed(5)}</small></div>`; fetch(`https://nominatim.openstreetmap.org/reverse?lat=${currentLat}&lon=${currentLng}&format=json`).then(r=>r.json()).then(data=>{currentAddress=data.display_name||`${currentLat.toFixed(5)}, ${currentLng.toFixed(5)}`; document.getElementById('locationAddress').innerHTML=`📍 ${currentAddress}<br><a href="${googleMapsLink}" target="_blank" style="color:#c85f1a; text-decoration:underline; font-weight:bold;">🔗 Open in Google Maps</a>`;}).catch(()=>{currentAddress=`${currentLat.toFixed(5)}, ${currentLng.toFixed(5)}`; document.getElementById('locationAddress').innerHTML=`📍 ${currentAddress}<br><a href="${googleMapsLink}" target="_blank" style="color:#c85f1a; text-decoration:underline; font-weight:bold;">🔗 Open in Google Maps</a>`;}); this.classList.remove('loading');},err=>{this.classList.remove('loading'); document.getElementById('locBtnText').textContent='Capture My Live Location'; alert('Location permission denied. Please allow location access.');});});
+  document.getElementById('getLiveLocationBtn').addEventListener('click',function(){if(!navigator.geolocation)return alert('Geolocation not supported'); this.classList.add('loading'); document.getElementById('locBtnText').textContent='Getting location…'; navigator.geolocation.getCurrentPosition(pos=>{currentLat=pos.coords.latitude; currentLng=pos.coords.longitude; googleMapsLink=`https://www.google.com/maps?q=${currentLat},${currentLng}`; document.getElementById('locBtnText').textContent='Location Captured ✓'; let mapDiv=document.getElementById('map'); mapDiv.innerHTML=`<div style="background:var(--cream-dark);padding:1.5rem;text-align:center;border-radius:var(--radius-md);cursor:pointer;border:1px dashed var(--border);" onclick="window.open('${googleMapsLink}', '_blank')"><i class="fas fa-map-marker-alt" style="color:#c85f1a; font-size:2rem;"></i><p style="font-size:0.95rem;font-weight:700;margin-top:0.4rem;">📍 Tap to open Google Maps</p><small style="font-size:0.82rem;font-weight:600;">${currentLat.toFixed(5)}, ${currentLng.toFixed(5)}</small></div>`; fetch(`https://nominatim.openstreetmap.org/reverse?lat=${currentLat}&lon=${currentLng}&format=json`).then(r=>r.json()).then(data=>{currentAddress=data.display_name||`${currentLat.toFixed(5)}, ${currentLng.toFixed(5)}`; document.getElementById('locationAddress').innerHTML=`📍 ${currentAddress}<br><a href="${googleMapsLink}" target="_blank" style="color:#c85f1a; text-decoration:underline; font-weight:bold;">🔗 Open in Google Maps</a>`;}).catch(()=>{currentAddress=`${currentLat.toFixed(5)}, ${currentLng.toFixed(5)}`; document.getElementById('locationAddress').innerHTML=`📍 ${currentAddress}<br><a href="${googleMapsLink}" target="_blank" style="color:#c85f1a; text-decoration:underline; font-weight:bold;">🔗 Open in Google Maps</a>`;}); this.classList.remove('loading');},err=>{this.classList.remove('loading'); document.getElementById('locBtnText').textContent='Capture My Live Location'; alert('Location permission denied. Please allow location access.');});});
 
   const preloaderDiv = document.getElementById('preloader');
   const preVid = document.getElementById('preloaderVideo');
@@ -703,4 +722,4 @@
   if(preVid){ preVid.play().catch(e=>console.log); let timer=setTimeout(hidePreloader,7000); preVid.addEventListener('ended',()=>{clearTimeout(timer); hidePreloader();},{once:true}); } else { setTimeout(hidePreloader,3000); }
 </script>
 </body>
-  </html>
+</html>

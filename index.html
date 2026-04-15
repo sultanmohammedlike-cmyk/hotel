@@ -133,15 +133,18 @@
       flex-wrap:wrap;
     }
     .logo-area{display:flex;align-items:center;gap:0.9rem;text-decoration:none;}
-    .logo-img{height:72px;width:auto;object-fit:contain;border-radius:50%;}
+    /* 👇 BIGGER LOGO (increased height) */
+    .logo-img{height:100px;width:auto;object-fit:contain;border-radius:50%;}
     .brand-text h1{
       font-family:'Playfair Display',serif;
-      font-size:clamp(1.1rem,3vw,1.55rem);
+      /* 👇 BIGGER TEXT */
+      font-size:clamp(1.3rem,4.5vw,1.9rem);
       color:var(--saffron-deep);
       font-weight:900;
       line-height:1.1;
     }
-    .brand-text p{font-size:0.72rem;color:var(--text-muted);font-weight:600;margin-top:2px;}
+    /* 👇 slightly bigger subtitle */
+    .brand-text p{font-size:0.82rem;color:var(--text-muted);font-weight:600;margin-top:2px;}
     .nav-address{
       display:flex;
       align-items:center;
@@ -554,8 +557,10 @@
     .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1rem;margin-top:1rem;font-size:0.72rem;opacity:0.5;text-align:center;}
 
     @media(max-width:420px){
-      .logo-img{height:58px;}
-      .brand-text h1{font-size:1rem;}
+      /* keep logo big but adjust slightly for small screens */
+      .logo-img{height:75px;}
+      .brand-text h1{font-size:1.2rem;}
+      .brand-text p{font-size:0.7rem;}
       .nav-address{display:none;}
       .catering-pills{display:none;}
       .categories-grid{grid-template-columns:repeat(2,1fr);gap:0.65rem;}
@@ -571,11 +576,11 @@
 <body>
 <div id="preloader">
   <video id="preloaderVideo" class="preloader-video" muted playsinline>
-    <source src="VID-20260412-WA0002.mp4" type="video/mp4">
+    <source src="/VID-20260412-WA0002.mp4" type="video/mp4">
   </video>
   <div class="preloader-overlay">
-    <img id="preloaderLogo" class="preloader-logo" src="IMG-20260407-WA0002.jpg" alt="Shree Srinidhi Upachar Logo">
-    <div class="preloader-tagline">Pure Veg · Since 1998</div>
+    <img id="preloaderLogo" class="preloader-logo" src="/IMG-20260407-WA0002.jpg" alt="Shree Srinidhi Upachar Logo">
+    <div class="preloader-tagline">Pure Veg · namma kollegala</div>
     <div class="preloader-dots"><span></span><span></span><span></span></div>
   </div>
 </div>
@@ -584,8 +589,8 @@
   <nav class="navbar">
     <div class="navbar-inner">
       <a class="logo-area" href="#">
-        <img class="logo-img" src="IMG-20260407-WA0002.jpg" alt="Logo">
-        <div class="brand-text"><h1>Shree Srinidhi Upachar</h1><p>Pure Veg · Since 1998 · Authentic Taste</p></div>
+        <img class="logo-img" src="/IMG-20260407-WA0002.jpg" alt="Logo">
+        <div class="brand-text"><h1>Shree Srinidhi Upachar</h1><p>Pure Veg ·  · Authentic Taste</p></div>
       </a>
       <div class="nav-address"><i class="fas fa-map-marker-alt"></i> #10/3591, Opp. Bus Stand, Mysore Road, Kollegal</div>
     </div>
@@ -606,7 +611,7 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <h3>Shree Srinidhi Upachar</h3>
-        <p>Pure vegetarian restaurant serving authentic South Indian &amp; North Indian cuisine since 1998.<br>Home delivery &amp; catering services available across Kollegal.</p>
+        <p>Pure vegetarian restaurant serving authentic South Indian &amp; North Indian cuisine namma kollegala.<br>Home delivery &amp; catering services available across Kollegal.</p>
       </div>
       <div class="footer-grid">
         <div class="footer-col">
@@ -698,4 +703,4 @@
   if(preVid){ preVid.play().catch(e=>console.log); let timer=setTimeout(hidePreloader,7000); preVid.addEventListener('ended',()=>{clearTimeout(timer); hidePreloader();},{once:true}); } else { setTimeout(hidePreloader,3000); }
 </script>
 </body>
-  </html>
+</html>

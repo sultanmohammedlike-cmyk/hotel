@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Shree Srinidhi Upachar | Home Delivery & Catering</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -33,18 +33,77 @@
     html{scroll-behavior:smooth;}
     body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);min-height:100vh;overflow-x:hidden;}
 
-    /* PRELOADER */
+    /* FULLSCREEN VIDEO PRELOADER */
     #preloader{
-      position:fixed; inset:0; width:100%; height:100%; background:#000; z-index:9999;
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      transition:opacity 0.9s ease; overflow:hidden;
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100%;
+      background:#000;
+      z-index:9999;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      transition:opacity 0.9s ease;
+      overflow:hidden;
     }
-    .preloader-video{position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:1;}
-    .preloader-overlay{position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.5rem; background:rgba(0,0,0,0.4); backdrop-filter:blur(3px); width:100%; height:100%;}
-    .preloader-logo{width:min(340px, 75vw); border-radius:var(--radius-lg); box-shadow:var(--shadow-lg); background:var(--white); padding:0.5rem; animation:gentleFloat 2.2s ease-in-out infinite;}
-    @keyframes gentleFloat{0%{transform:translateY(0);}50%{transform:translateY(-8px);}100%{transform:translateY(0);}}
-    .preloader-tagline{font-family:'Playfair Display',serif; font-size:1.4rem; color:#fff7e8; font-style:italic; background:rgba(200,95,26,0.7); padding:0.4rem 1.2rem; border-radius:60px; font-weight:bold; text-shadow:0 2px 10px rgba(0,0,0,0.5);}
-    .preloader-dots span{display:inline-block; width:8px; height:8px; border-radius:50%; background:#ffdd99; margin:0 4px; animation:pulse 1.2s ease-in-out infinite;}
+    .preloader-video{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:1;
+    }
+    .preloader-overlay{
+      position:relative;
+      z-index:2;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:1.5rem;
+      background:rgba(0,0,0,0.4);
+      backdrop-filter:blur(3px);
+      width:100%;
+      height:100%;
+    }
+    .preloader-logo{
+      width:min(280px, 70vw);
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow-lg);
+      background:var(--white);
+      padding:0.5rem;
+      animation:gentleFloat 2.2s ease-in-out infinite;
+    }
+    @keyframes gentleFloat{
+      0%{transform:translateY(0px);}
+      50%{transform:translateY(-8px);}
+      100%{transform:translateY(0px);}
+    }
+    .preloader-tagline{
+      font-family:'Playfair Display',serif;
+      font-size:1.2rem;
+      color:#fff7e8;
+      font-style:italic;
+      letter-spacing:0.5px;
+      text-shadow:0 2px 10px rgba(0,0,0,0.5);
+      background:rgba(200,95,26,0.7);
+      padding:0.4rem 1.2rem;
+      border-radius:60px;
+      font-weight:bold;
+    }
+    .preloader-dots span{
+      display:inline-block;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#ffdd99;
+      margin:0 4px;
+      animation:pulse 1.2s ease-in-out infinite;
+    }
     .preloader-dots span:nth-child(2){animation-delay:0.2s;}
     .preloader-dots span:nth-child(3){animation-delay:0.4s;}
     @keyframes pulse{0%,100%{opacity:0.25;transform:scale(0.8);}50%{opacity:1;transform:scale(1.1);}}
@@ -52,183 +111,473 @@
     /* MAIN CONTENT */
     .main-content{display:none;min-height:100vh;}
 
-    /* NAVBAR – PERFECT CENTERING + BIGGER LOGO/TEXT */
+    /* NAVBAR */
     .navbar{
-      background:rgba(253,246,238,0.96); backdrop-filter:blur(12px);
-      -webkit-backdrop-filter:blur(12px); position:sticky; top:0; z-index:500;
-      border-bottom:1.5px solid var(--border); box-shadow:0 2px 16px rgba(120,60,10,0.06);
-      padding:0.5rem 0;
+      background:rgba(253,246,238,0.95);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      position: sticky;
+      top:0;
+      z-index:500;
+      border-bottom:1.5px solid var(--border);
+      box-shadow:0 2px 16px rgba(120,60,10,0.06);
+      /* 👇 make navbar relative so absolute address can be positioned */
+      position: relative; 
     }
     .navbar-inner{
-      max-width:1280px; margin:0 auto;
-      display:grid;
-      grid-template-columns: 1fr auto 1fr;   /* three columns: left spacer, centered logo, right address */
-      align-items:center;
-      padding:0.6rem 1.2rem;
-      gap:1rem;
-    }
-    .logo-area{
-      grid-column:2;  /* always middle column */
+      max-width:1280px;
+      margin:0 auto;
       display:flex;
       align-items:center;
-      justify-content:center;
-      gap:1.2rem;
-      text-decoration:none;
-      text-align:center;
+      /* 👇 center the logo area */
+      justify-content: center;
+      padding:0.6rem 1.2rem;
+      gap:1rem;
       flex-wrap:wrap;
     }
-    /* BIGGER LOGO */
-    .logo-img{
-      height:150px;      /* increased */
-      width:auto;
-      object-fit:contain;
-      border-radius:50%;
-      transition:height 0.2s;
-    }
+    .logo-area{display:flex;align-items:center;gap:0.9rem;text-decoration:none;}
+    /* 👇 BIGGER LOGO (increased height even more) */
+    .logo-img{height:130px;width:auto;object-fit:contain;border-radius:50%;}
     .brand-text h1{
       font-family:'Playfair Display',serif;
-      font-size:clamp(2rem, 8vw, 3.2rem);   /* bigger text */
+      /* 👇 BIGGER TEXT (increased) */
+      font-size:clamp(1.7rem,5.5vw,2.5rem);
       color:var(--saffron-deep);
       font-weight:900;
       line-height:1.1;
     }
-    .brand-text p{
-      font-size:clamp(1.1rem, 4vw, 1.4rem);  /* bigger subtitle */
-      color:var(--text-muted);
-      font-weight:700;
-      margin-top:6px;
-    }
-    
+    /* 👇 bigger subtitle */
+    .brand-text p{font-size:0.95rem;color:var(--text-muted);font-weight:600;margin-top:2px;}
     .nav-address{
-      grid-column:3;  /* right column */
-      justify-self:end;
-      display:flex; align-items:center; gap:0.6rem;
-      background:var(--gold-light); border:1px solid var(--border);
-      border-radius:var(--radius-full); padding:0.75rem 1.6rem;
-      font-size:1.05rem; color:var(--text-mid); font-weight:700;
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-      max-width:360px;
+      display:flex;
+      align-items:center;
+      gap:0.4rem;
+      background:var(--gold-light);
+      border:1px solid var(--border);
+      border-radius:var(--radius-full);
+      padding:0.45rem 1rem;
+      font-size:0.78rem;
+      color:var(--text-mid);
+      font-weight:600;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:300px;
+      /* 👇 position absolute so it doesn't break centering */
+      position: absolute;
+      right: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
     }
-    .nav-address i{color:var(--saffron); font-size:1.3rem;}
-
-    /* On mobile: stack everything and center ALL */
-    @media (max-width: 680px) {
-      .navbar-inner{
-        display:flex;              /* override grid */
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        gap:0.8rem;
-      }
-      .logo-area{ grid-column:unset; }
-      .nav-address{
-        grid-column:unset; justify-self:center;
-        max-width:90%; font-size:1rem; padding:0.7rem 1.4rem;
-      }
-      .logo-img{ height:130px; }   /* still big on mobile */
-    }
-    @media (max-width: 420px) {
-      .logo-img{ height:110px; }
-      .brand-text h1{ font-size:1.9rem; }
-    }
+    .nav-address i{color:var(--saffron);font-size:0.85rem;flex-shrink:0;}
 
     /* HERO TICKER */
     .hero-ticker{
       background:linear-gradient(90deg,var(--saffron-deep),var(--saffron),var(--gold),var(--saffron));
-      background-size:300% auto; animation:shimmer 5s linear infinite;
-      color:white; padding:0.8rem 1rem; text-align:center;
-      font-size:clamp(0.95rem, 3.5vw, 1.1rem); font-weight:bold; letter-spacing:0.4px; overflow:hidden;
+      background-size:300% auto;
+      animation:shimmer 5s linear infinite;
+      color:white;
+      padding:0.55rem 1rem;
+      text-align:center;
+      font-size:0.82rem;
+      font-weight:bold;
+      letter-spacing:0.4px;
+      overflow:hidden;
     }
     @keyframes shimmer{0%{background-position:0%}100%{background-position:300%}}
-    .ticker-inner{display:inline-flex; gap:2.2rem; white-space:nowrap;}
+    .ticker-inner{display:inline-flex;gap:2.5rem;white-space:nowrap;}
 
-    .container{max-width:1280px; margin:0 auto; padding:0 1rem;}
+    .container{max-width:1280px;margin:0 auto;padding:0 1rem;}
 
     /* CATERING BANNER */
     .catering-banner{
-      background:var(--white); border:1.5px solid var(--border); border-radius:var(--radius-lg);
-      padding:1.2rem 1.5rem; margin:1.5rem 0; display:flex; align-items:center; gap:1rem;
-      flex-wrap:wrap; justify-content:space-between; box-shadow:var(--shadow-sm); position:relative;
+      background:var(--white);
+      border:1.5px solid var(--border);
+      border-radius:var(--radius-lg);
+      padding:1rem 1.4rem;
+      margin:1.4rem 0;
+      display:flex;
+      align-items:center;
+      gap:1rem;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      box-shadow:var(--shadow-sm);
+      position:relative;
+      overflow:hidden;
     }
-    .catering-banner::before{content:''; position:absolute; left:0; top:0; bottom:0; width:5px; background:linear-gradient(180deg,var(--saffron),var(--gold)); border-radius:var(--radius-full) 0 0 var(--radius-full);}
-    .catering-left{display:flex; align-items:center; gap:0.8rem; flex-wrap:wrap;}
-    .catering-icon{width:54px; height:54px; border-radius:var(--radius-sm); background:var(--saffron-light); display:flex; align-items:center; justify-content:center; color:var(--saffron); font-size:1.5rem;}
-    .catering-info strong{display:block; font-size:clamp(1.05rem, 3.5vw, 1.2rem); color:var(--text-dark); font-weight:800;}
-    .catering-info span{font-size:clamp(0.88rem, 2.8vw, 1rem); color:var(--text-muted); font-weight:600;}
-    .catering-pills{display:flex; flex-wrap:wrap; gap:0.5rem;}
-    .c-pill{background:var(--cream-dark); border:1px solid var(--border); border-radius:var(--radius-full); padding:0.3rem 1rem; font-size:0.9rem; color:var(--text-mid); font-weight:800;}
-    .catering-cta{background:var(--saffron); color:white; border:none; border-radius:var(--radius-full); padding:0.8rem 1.9rem; font-size:1.1rem; font-weight:800; cursor:pointer; display:flex; align-items:center; gap:0.5rem; white-space:nowrap; text-decoration:none;}
+    .catering-banner::before{
+      content:'';
+      position:absolute;
+      left:0;
+      top:0;
+      bottom:0;
+      width:5px;
+      background:linear-gradient(180deg,var(--saffron),var(--gold));
+      border-radius:var(--radius-full) 0 0 var(--radius-full);
+    }
+    .catering-left{display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;}
+    .catering-icon{
+      width:42px;
+      height:42px;
+      border-radius:var(--radius-sm);
+      background:var(--saffron-light);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--saffron);
+      font-size:1.1rem;
+      flex-shrink:0;
+    }
+    .catering-info strong{display:block;font-size:0.92rem;color:var(--text-dark);font-weight:bold;}
+    .catering-info span{font-size:0.75rem;color:var(--text-muted);font-weight:500;}
+    .catering-pills{display:flex;flex-wrap:wrap;gap:0.45rem;}
+    .c-pill{
+      background:var(--cream-dark);
+      border:1px solid var(--border);
+      border-radius:var(--radius-full);
+      padding:0.2rem 0.7rem;
+      font-size:0.72rem;
+      color:var(--text-mid);
+      font-weight:bold;
+    }
+    .catering-cta{
+      background:var(--saffron);
+      color:white;
+      border:none;
+      border-radius:var(--radius-full);
+      padding:0.55rem 1.3rem;
+      font-size:0.82rem;
+      font-weight:bold;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      gap:0.5rem;
+      white-space:nowrap;
+      text-decoration:none;
+      transition:background 0.2s;
+    }
     .catering-cta:hover{background:var(--saffron-deep);}
 
-    .section-heading{display:flex; align-items:center; gap:0.8rem; margin:2rem 0 1.2rem;}
-    .section-heading h2{font-family:'Playfair Display',serif; font-size:clamp(1.7rem, 4.5vw, 2.1rem); color:var(--text-dark); font-weight:bold;}
-    .section-heading-line{flex:1; height:1.5px; background:var(--border);}
+    .section-heading{
+      display:flex;
+      align-items:center;
+      gap:0.8rem;
+      margin:1.8rem 0 1rem;
+    }
+    .section-heading h2{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.2rem,3vw,1.6rem);
+      color:var(--text-dark);
+      font-weight:bold;
+    }
+    .section-heading-line{flex:1;height:1.5px;background:var(--border);}
 
-    .categories-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(min(180px, 45vw), 1fr)); gap:1rem; margin-bottom:1.5rem;}
-    .category-card{background:var(--white); border:1.5px solid var(--border); border-radius:var(--radius-md); overflow:hidden; cursor:pointer; transition:all 0.22s; box-shadow:var(--shadow-sm);}
-    .category-card:hover{transform:translateY(-4px); box-shadow:var(--shadow-md);}
-    .cover-img{height:140px; background-size:cover; background-position:center; position:relative;}
-    .cover-img::after{content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(30,10,0,0.45) 0%, transparent 60%);}
-    .card-body{padding:0.9rem 0.9rem 1rem;}
-    .card-body h3{font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--text-dark); font-weight:800; line-height:1.3; margin-bottom:0.4rem;}
-    .card-timing{display:inline-flex; align-items:center; gap:0.3rem; background:var(--cream-dark); border-radius:var(--radius-full); padding:0.25rem 0.8rem; font-size:0.8rem; color:var(--text-muted); font-weight:800;}
+    .categories-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(min(160px,43vw),1fr));
+      gap:0.9rem;
+      margin-bottom:1.5rem;
+    }
+    .category-card{
+      background:var(--white);
+      border:1.5px solid var(--border);
+      border-radius:var(--radius-md);
+      overflow:hidden;
+      cursor:pointer;
+      transition:transform 0.22s ease,box-shadow 0.22s ease;
+      box-shadow:var(--shadow-sm);
+    }
+    .category-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+    .cover-img{
+      height:110px;
+      background-size:cover;
+      background-position:center;
+      position:relative;
+    }
+    .cover-img::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(30,10,0,0.45) 0%,transparent 60%);
+    }
+    .card-body{padding:0.65rem 0.7rem 0.75rem;}
+    .card-body h3{
+      font-family:'Playfair Display',serif;
+      font-size:0.82rem;
+      color:var(--text-dark);
+      font-weight:bold;
+      line-height:1.25;
+      margin-bottom:0.35rem;
+    }
+    .card-timing{
+      display:inline-flex;
+      align-items:center;
+      gap:0.3rem;
+      background:var(--cream-dark);
+      border-radius:var(--radius-full);
+      padding:0.15rem 0.55rem;
+      font-size:0.63rem;
+      color:var(--text-muted);
+      font-weight:bold;
+    }
 
-    .menu-panel{background:var(--white); border:1.5px solid var(--border); border-radius:var(--radius-lg); padding:1.5rem 1.3rem; margin-bottom:2rem; box-shadow:var(--shadow-md); display:none; animation:fadeUp 0.3s;}
-    @keyframes fadeUp{from{opacity:0; transform:translateY(12px);}to{opacity:1; transform:translateY(0);}}
-    .menu-header{display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:1.2rem; padding-bottom:1rem; border-bottom:1.5px solid var(--border);}
-    .menu-header h2{font-family:'Playfair Display',serif; font-size:clamp(1.5rem, 4.5vw, 1.9rem); color:var(--saffron-deep); font-weight:bold; border-left:5px solid var(--saffron); padding-left:0.8rem;}
-    .timing-tag{background:var(--gold-light); border:1px solid #e8c97a; border-radius:var(--radius-full); padding:0.45rem 1.2rem; font-size:0.95rem; color:var(--saffron-deep); font-weight:800; white-space:nowrap;}
-    .items-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(min(290px, 100%), 1fr)); gap:0.9rem;}
-    .menu-item{background:var(--cream); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1rem 1.1rem; display:flex; align-items:center; justify-content:space-between; gap:0.8rem; transition:all 0.2s;}
-    .menu-item:hover{border-color:var(--saffron); box-shadow:var(--shadow-sm);}
-    .item-name{font-size:1.1rem; font-weight:800; color:var(--text-dark);}
-    .item-price{font-size:1.25rem; font-weight:900; color:var(--saffron);}
-    .add-btn{background:var(--saffron); color:white; border:none; border-radius:var(--radius-full); padding:0.65rem 1.4rem; font-size:1rem; font-weight:800; cursor:pointer; transition:all 0.15s;}
-    .add-btn:hover{background:var(--saffron-deep); transform:scale(1.02);}
+    .menu-panel{
+      background:var(--white);
+      border:1.5px solid var(--border);
+      border-radius:var(--radius-lg);
+      padding:1.4rem 1.2rem;
+      margin-bottom:2rem;
+      box-shadow:var(--shadow-md);
+      display:none;
+      animation:fadeUp 0.3s ease;
+    }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+    .menu-header{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:1rem;
+      flex-wrap:wrap;
+      margin-bottom:1.2rem;
+      padding-bottom:1rem;
+      border-bottom:1.5px solid var(--border);
+    }
+    .menu-header h2{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.1rem,3.5vw,1.5rem);
+      color:var(--saffron-deep);
+      font-weight:bold;
+      border-left:5px solid var(--saffron);
+      padding-left:0.8rem;
+    }
+    .timing-tag{
+      background:var(--gold-light);
+      border:1px solid #e8c97a;
+      border-radius:var(--radius-full);
+      padding:0.3rem 0.9rem;
+      font-size:0.72rem;
+      color:var(--saffron-deep);
+      font-weight:bold;
+      white-space:nowrap;
+    }
+    .items-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));
+      gap:0.7rem;
+    }
+    .menu-item{
+      background:var(--cream);
+      border:1px solid var(--border);
+      border-radius:var(--radius-sm);
+      padding:0.75rem 0.9rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:0.8rem;
+      transition:all 0.2s ease;
+    }
+    .menu-item:hover{border-color:var(--saffron);box-shadow:var(--shadow-sm);}
+    .item-name{
+      font-size:0.88rem;
+      font-weight:700 !important;
+      color:var(--text-dark);
+    }
+    .item-price{
+      font-size:0.9rem;
+      font-weight:bold !important;
+      color:var(--saffron);
+      letter-spacing:-0.2px;
+    }
+    .add-btn{
+      background:var(--saffron);
+      color:white;
+      border:none;
+      border-radius:var(--radius-full);
+      padding:0.38rem 0.9rem;
+      font-size:0.78rem;
+      font-weight:bold;
+      cursor:pointer;
+      transition:all 0.15s;
+    }
+    .add-btn:hover{background:var(--saffron-deep);transform:scale(1.02);}
+    .add-btn:active{transform:scale(0.95);}
     .add-btn.added{background:#2a9d5c;}
 
-    /* CART BAR */
-    .cart-bar{position:sticky; bottom:0; z-index:400; padding:0.7rem 1rem; pointer-events:none;}
-    .cart-bar-inner{max-width:600px; margin:0 auto; background:var(--text-dark); color:white; border-radius:var(--radius-full); padding:0.8rem 1.2rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; box-shadow:0 8px 32px rgba(30,10,0,0.35); pointer-events:all;}
-    .cart-badge{background:var(--saffron); width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1rem; font-weight:800;}
-    .cart-summary{font-size:1.05rem; font-weight:700;}
-    .cart-total{font-size:1.05rem; font-weight:800; color:var(--saffron-light);}
-    .cart-cta-btn{background:var(--green-wa); color:white; border:none; border-radius:var(--radius-full); padding:0.75rem 1.7rem; font-size:1.05rem; font-weight:800; cursor:pointer; display:flex; align-items:center; gap:0.5rem;}
+    .cart-bar{
+      position:sticky;
+      bottom:0;
+      z-index:400;
+      padding:0.7rem 1rem;
+      pointer-events:none;
+    }
+    .cart-bar-inner{
+      max-width:600px;
+      margin:0 auto;
+      background:var(--text-dark);
+      color:white;
+      border-radius:var(--radius-full);
+      padding:0.75rem 1rem 0.75rem 1.4rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      box-shadow:0 8px 32px rgba(30,10,0,0.35);
+      pointer-events:all;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+    .cart-badge{
+      background:var(--saffron);
+      width:26px;
+      height:26px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:0.75rem;
+      font-weight:bold;
+    }
+    .cart-summary{font-size:0.85rem;font-weight:600;opacity:0.92;}
+    .cart-total{font-size:0.88rem;font-weight:bold;color:var(--saffron-light);}
+    .cart-cta-btn{
+      background:var(--green-wa);
+      color:white;
+      border:none;
+      border-radius:var(--radius-full);
+      padding:0.55rem 1.2rem;
+      font-size:0.82rem;
+      font-weight:bold;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      gap:0.45rem;
+    }
 
-    /* MODAL */
-    .modal-overlay{display:none; position:fixed; inset:0; background:rgba(10,5,0,0.72); z-index:800; justify-content:flex-end; align-items:flex-end; backdrop-filter:blur(4px);}
+    .modal-overlay{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(10,5,0,0.72);
+      z-index:800;
+      justify-content:flex-end;
+      align-items:flex-end;
+      backdrop-filter:blur(4px);
+    }
     .modal-overlay.open{display:flex;}
-    .modal-sheet{background:var(--white); width:100%; max-width:530px; max-height:92vh; border-radius:var(--radius-lg) var(--radius-lg) 0 0; overflow-y:auto; padding:1.5rem 1.4rem 2rem;}
-    @media(min-width:600px){.modal-overlay{justify-content:center; align-items:center;}.modal-sheet{border-radius:var(--radius-lg); max-height:88vh;}}
-    .modal-title{font-family:'Playfair Display',serif; font-size:1.9rem; font-weight:800;}
-    .bill-box{background:var(--cream); border-radius:var(--radius-md); padding:1.2rem 1.3rem; margin:1rem 0; border:1px solid var(--border);}
-    .bill-row{display:flex; justify-content:space-between; padding:0.4rem 0; font-size:1.1rem; font-weight:700;}
-    .bill-total-row{border-top:2px dashed var(--border); padding-top:0.9rem; margin-top:0.6rem; font-size:1.25rem; font-weight:800;}
-    .btn-upi, .btn-whatsapp{width:100%; padding:1rem; font-size:1.1rem; font-weight:800; border-radius:var(--radius-full); display:flex; align-items:center; justify-content:center; gap:0.6rem; cursor:pointer; border:none;}
-    .btn-upi{background:#5f259f; color:white;}
-    .btn-whatsapp{background:var(--green-wa); color:white;}
-    .get-loc-btn{width:100%; background:transparent; border:1.5px solid var(--saffron); border-radius:var(--radius-full); padding:0.85rem; font-size:1.05rem; font-weight:800; margin-bottom:0.8rem; cursor:pointer; color:var(--saffron);}
-    .cart-item-row{display:flex; align-items:center; justify-content:space-between; gap:0.7rem; padding:0.8rem 0; border-bottom:1px solid var(--border);}
-    .cir-name{font-size:1.1rem; font-weight:800;}
-    .cir-price{font-size:1.1rem; font-weight:800; color:var(--saffron);}
-    .qty-btn{width:36px; height:36px; border-radius:50%; border:1.5px solid var(--border); background:var(--cream); font-weight:800; font-size:1.2rem; cursor:pointer;}
+    .modal-sheet{
+      background:var(--white);
+      width:100%;
+      max-width:520px;
+      max-height:92vh;
+      border-radius:var(--radius-lg) var(--radius-lg) 0 0;
+      overflow-y:auto;
+      padding:1.4rem 1.2rem 2rem;
+    }
+    @media(min-width:600px){
+      .modal-overlay{justify-content:center;align-items:center;}
+      .modal-sheet{border-radius:var(--radius-lg);max-height:88vh;}
+    }
+    .modal-title{
+      font-family:'Playfair Display',serif;
+      font-size:1.3rem;
+      font-weight:bold;
+    }
+    .bill-box{
+      background:var(--cream);
+      border-radius:var(--radius-md);
+      padding:1rem 1.1rem;
+      margin:1rem 0;
+      border:1px solid var(--border);
+    }
+    .bill-row{display:flex;justify-content:space-between;padding:0.3rem 0;font-weight:600;}
+    .bill-total-row{border-top:2px dashed var(--border);padding-top:0.6rem;margin-top:0.4rem;font-size:1.05rem;font-weight:bold;color:var(--text-dark);}
+    .btn-upi,.btn-whatsapp{
+      width:100%;
+      padding:0.85rem;
+      font-weight:bold;
+      border-radius:var(--radius-full);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:0.6rem;
+      cursor:pointer;
+      transition:all 0.15s;
+    }
+    .btn-upi{background:#5f259f;color:white;}
+    .btn-upi:hover{background:#4a1a80;}
+    .btn-whatsapp{background:var(--green-wa);color:white;}
+    .btn-whatsapp:hover{background:#1ea355;}
+    .get-loc-btn{
+      width:100%;
+      background:transparent;
+      border:1.5px solid var(--saffron);
+      border-radius:var(--radius-full);
+      padding:0.6rem;
+      font-weight:bold;
+      margin-bottom:0.8rem;
+      cursor:pointer;
+      color:var(--saffron);
+    }
+    .get-loc-btn:hover{background:var(--saffron-light);}
+    .cart-item-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:0.7rem;
+      padding:0.7rem 0;
+      border-bottom:1px solid var(--border);
+      flex-wrap:wrap;
+    }
+    .cir-name{font-size:0.88rem;font-weight:bold;color:var(--text-dark);}
+    .cir-price{font-size:0.88rem;font-weight:bold;color:var(--saffron);}
+    .qty-btn{
+      width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);
+      background:var(--cream);cursor:pointer;font-weight:bold;
+    }
+    .qty-btn:hover{background:var(--saffron-light);border-color:var(--saffron);}
 
-    /* FOOTER */
-    footer{background:var(--text-dark); color:rgba(255,255,255,0.75); padding:2.5rem 1rem 1.8rem; margin-top:3rem;}
-    .footer-inner{max-width:1280px; margin:0 auto;}
-    .footer-brand{margin-bottom:1.8rem;}
-    .footer-brand h3{font-family:'Playfair Display',serif; font-size:1.9rem; color:var(--saffron-light); font-weight:800;}
-    .footer-brand p{font-size:1rem; opacity:0.7; line-height:1.6;}
-    .footer-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1.8rem; padding:1.5rem 0; border-top:1px solid rgba(255,255,255,0.1);}
-    .footer-col h4{font-size:1rem; font-weight:800; color:var(--saffron-light); text-transform:uppercase; margin-bottom:0.8rem;}
-    .footer-col p, .footer-col a{font-size:0.98rem; opacity:0.7; line-height:1.8; display:block; text-decoration:none; color:inherit;}
-    .footer-bottom{font-size:0.9rem; opacity:0.5; text-align:center; padding-top:1.2rem; border-top:1px solid rgba(255,255,255,0.1); margin-top:1rem;}
+    /* ORIGINAL FOOTER */
+    footer{
+      background:var(--text-dark);
+      color:rgba(255,255,255,0.75);
+      padding:2.5rem 1rem 1.5rem;
+      margin-top:3rem;
+    }
+    .footer-inner{max-width:1280px;margin:0 auto;}
+    .footer-brand{margin-bottom:1.5rem;}
+    .footer-brand h3{
+      font-family:'Playfair Display',serif;
+      font-size:1.3rem;
+      color:var(--saffron-light);
+      font-weight:bold;
+      margin-bottom:0.4rem;
+    }
+    .footer-brand p{font-size:0.8rem;opacity:0.7;line-height:1.6;}
+    .footer-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:1.5rem;
+      padding:1.5rem 0;
+      border-top:1px solid rgba(255,255,255,0.1);
+    }
+    .footer-col h4{font-size:0.78rem;font-weight:bold;color:var(--saffron-light);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:0.7rem;}
+    .footer-col p,.footer-col a{font-size:0.8rem;opacity:0.7;line-height:1.8;display:block;text-decoration:none;color:inherit;}
+    .footer-col a:hover{opacity:1;color:var(--saffron-light);}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1rem;margin-top:1rem;font-size:0.72rem;opacity:0.5;text-align:center;}
 
-    @media(max-width:480px){
-      .cover-img{height:120px;}
+    @media(max-width:420px){
+      /* keep logo big but adjust slightly for small screens */
+      .logo-img{height:100px;}
+      .brand-text h1{font-size:1.4rem;}
+      .brand-text p{font-size:0.8rem;}
+      .nav-address{display:none;}
       .catering-pills{display:none;}
-      .catering-cta{padding:0.7rem 1.4rem;}
-      .add-btn{padding:0.55rem 1.1rem;}
+      .categories-grid{grid-template-columns:repeat(2,1fr);gap:0.65rem;}
+      .cover-img{height:90px;}
+      .cart-bar-inner{padding:0.6rem 0.9rem;}
+    }
+    @media(min-width:768px){
+      .categories-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));}
+      .cover-img{height:130px;}
     }
   </style>
 </head>
@@ -247,25 +596,20 @@
 <div class="main-content" id="mainContent">
   <nav class="navbar">
     <div class="navbar-inner">
-      <!-- CENTERED LOGO (grid column 2) -->
       <a class="logo-area" href="#">
         <img class="logo-img" src="IMG-20260407-WA0002.jpg" alt="Logo">
-        <div class="brand-text"><h1>Shree Srinidhi Upachar</h1><p>Pure Veg · Authentic Taste</p></div>
+        <div class="brand-text"><h1>Shree Srinidhi Upachar</h1><p>Pure Veg ·  · Authentic Taste</p></div>
       </a>
-      <!-- ADDRESS RIGHT (stacks below on mobile) -->
       <div class="nav-address"><i class="fas fa-map-marker-alt"></i> #10/3591, Opp. Bus Stand, Mysore Road, Kollegal</div>
     </div>
   </nav>
-  
   <div class="hero-ticker"><span class="ticker-inner">✦ Home Delivery Available &nbsp;&nbsp;✦ Pure Vegetarian &nbsp;&nbsp;✦ Catering for All Occasions &nbsp;&nbsp;✦ Call +91 9964054005 &nbsp;&nbsp;✦ Home Delivery Available &nbsp;&nbsp;✦ Pure Vegetarian</span></div>
-  
   <div class="container">
     <div class="catering-banner">
       <div class="catering-left"><div class="catering-icon"><i class="fas fa-concierge-bell"></i></div><div class="catering-info"><strong>Catering Services — All Occasions</strong><span>Weddings · Birthdays · Corporate Events · Functions</span></div></div>
       <div class="catering-pills"><span class="c-pill">🍳 Combo Breakfast</span><span class="c-pill">🍛 Combo Lunch</span><span class="c-pill">🌙 Combo Dinner</span><span class="c-pill">🥨 Snacks</span></div>
       <a class="catering-cta" href="tel:+919964054005"><i class="fas fa-phone"></i> Call Now</a>
     </div>
-    
     <div class="section-heading"><h2>Our Menu</h2><div class="section-heading-line"></div></div>
     <div class="categories-grid" id="categoriesGrid"></div>
     <div class="menu-panel" id="menuPanel"><div class="menu-header"><h2 id="activeCatName">Category</h2><span class="timing-tag" id="activeTimings"></span></div><div class="items-grid" id="itemsContainer"></div></div>
@@ -273,36 +617,57 @@
 
   <footer>
     <div class="footer-inner">
-      <div class="footer-brand"><h3>Shree Srinidhi Upachar</h3><p>Pure vegetarian restaurant serving authentic South Indian &amp; North Indian cuisine namma kollegala.<br>Home delivery &amp; catering services available across Kollegal.</p></div>
+      <div class="footer-brand">
+        <h3>Shree Srinidhi Upachar</h3>
+        <p>Pure vegetarian restaurant serving authentic South Indian &amp; North Indian cuisine namma kollegala.<br>Home delivery &amp; catering services available across Kollegal.</p>
+      </div>
       <div class="footer-grid">
-        <div class="footer-col"><h4>Location</h4><p>#10/3591, Opp. Bus Stand<br>Mysore Road, Kollegal<br>Karnataka</p></div>
-        <div class="footer-col"><h4>Contact</h4><a href="tel:+919964054005">+91 9964054005</a><a href="https://wa.me/919964054005">WhatsApp Order</a></div>
-        <div class="footer-col"><h4>Timings</h4><p>Breakfast: 6:00 am – 4:00 pm</p><p>Lunch: 12:00 pm – 4:00 pm</p><p>Dinner: 7:00 pm – 10:30 pm</p></div>
+        <div class="footer-col">
+          <h4>Location</h4>
+          <p>#10/3591, Opp. Bus Stand<br>Mysore Road, Kollegal<br>Karnataka</p>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="tel:+919964054005">+91 9964054005</a>
+          <a href="https://wa.me/919964054005">WhatsApp Order</a>
+        </div>
+        <div class="footer-col">
+          <h4>Timings</h4>
+          <p>Breakfast: 6:00 am – 4:00 pm</p>
+          <p>Lunch: 12:00 pm – 4:00 pm</p>
+          <p>Dinner: 7:00 pm – 10:30 pm</p>
+        </div>
       </div>
       <div class="footer-bottom">© 2026 Shree Srinidhi Upachar. All rights reserved.</div>
     </div>
   </footer>
 </div>
 
-<div class="cart-bar" id="cartBar" style="display:none;"><div class="cart-bar-inner"><div style="display:flex; align-items:center; gap:0.8rem;"><div class="cart-badge" id="cartCount">0</div><div><div class="cart-summary" id="cartSummaryText">items in cart</div><div class="cart-total">₹<span id="cartTotalPreview">0</span></div></div></div><button class="cart-cta-btn" id="goToCartBtn"><i class="fab fa-whatsapp"></i> View Order</button></div></div>
+<div class="cart-bar" id="cartBar" style="display:none;"><div class="cart-bar-inner"><div class="cart-info-left"><div class="cart-badge" id="cartCount">0</div><div><div class="cart-summary" id="cartSummaryText">items in cart</div><div class="cart-total">₹<span id="cartTotalPreview">0</span></div></div></div><button class="cart-cta-btn" id="goToCartBtn"><i class="fab fa-whatsapp"></i> View Order</button></div></div>
 
-<div class="modal-overlay" id="orderModal"><div class="modal-sheet"><div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;"><div class="modal-title">Your Order</div><button id="closeModalBtn" style="background:var(--cream-dark); border:1.5px solid var(--border); border-radius:50%; width:42px; height:42px; font-size:1.3rem; cursor:pointer;"><i class="fas fa-times"></i></button></div><div id="modalCartItems"></div><div class="bill-box" id="billBox" style="display:none;"><div class="bill-row"><span>Subtotal</span><span>₹<span id="modalSubtotal">0</span></span></div><div class="bill-row"><span>Delivery charge</span><span>₹30</span></div><div class="bill-row bill-total-row"><span>Grand Total</span><span>₹<span id="modalGrandTotal">0</span></span></div></div><div style="margin:1.2rem 0;"><div style="font-size:1.05rem; font-weight:800; color:var(--text-mid); margin-bottom:0.7rem;"><i class="fas fa-map-marker-alt"></i> Delivery Location</div><button class="get-loc-btn" id="getLiveLocationBtn"><i class="fas fa-crosshairs"></i> <span id="locBtnText">Capture My Live Location</span></button><div id="map" style="border-radius:var(--radius-md); overflow:hidden; margin-bottom:0.8rem;"><div style="background:var(--cream-dark); padding:2rem; text-align:center; border-radius:var(--radius-md); border:1px dashed var(--border);"><i class="fas fa-map" style="font-size:2rem; color:var(--text-muted);"></i><p style="margin-top:0.5rem;">Tap above to show your location</p></div></div><div class="loc-address" id="locationAddress" style="font-size:1rem; font-weight:600;">📍 Location not captured yet</div></div><div style="display:flex; flex-direction:column; gap:0.8rem;"><button class="btn-upi" id="upiPaymentBtn"><i class="fas fa-mobile-alt"></i> Pay via UPI (PhonePe / GPay)</button><button class="btn-whatsapp" id="sendWhatsAppBtn"><i class="fab fa-whatsapp"></i> Confirm & Send on WhatsApp</button><p style="font-size:0.9rem; color:var(--text-muted); text-align:center;">UPI payment with exact bill · Or send order via WhatsApp</p></div></div></div>
+<div class="modal-overlay" id="orderModal"><div class="modal-sheet"><div class="modal-handle"></div><div class="modal-title-row"><div class="modal-title">Your Order</div><button class="close-modal" id="closeModalBtn"><i class="fas fa-times"></i></button></div><div id="modalCartItems"></div><div class="bill-box" id="billBox" style="display:none;">
+    <div class="bill-row"><span>Subtotal</span><span>₹<span id="modalSubtotal">0</span></span></div>
+    <div class="bill-row" id="parcelRow" style="display:none;"><span>Parcel Charge</span><span>₹<span id="modalParcel">0</span></span></div>
+    <div class="bill-row"><span>Delivery charge</span><span>₹30</span></div>
+    <div class="bill-row bill-total-row"><span>Grand Total</span><span>₹<span id="modalGrandTotal">0</span></span></div>
+</div><div class="location-section"><div class="loc-label"><i class="fas fa-map-marker-alt"></i> Delivery Location</div><button class="get-loc-btn" id="getLiveLocationBtn"><i class="fas fa-crosshairs"></i> <span id="locBtnText">Capture My Live Location</span></button><div id="map"><div class="map-placeholder"><i class="fas fa-map"></i><p>Tap above to show your location</p></div></div><div class="loc-address" id="locationAddress">📍 Location not captured yet</div></div><div class="action-btns"><button class="btn-upi" id="upiPaymentBtn"><i class="fas fa-mobile-alt"></i> Pay via UPI (PhonePe / GPay)</button><button class="btn-whatsapp" id="sendWhatsAppBtn"><i class="fab fa-whatsapp"></i> Confirm & Send on WhatsApp</button><p class="order-note">UPI payment with exact bill amount · Or send order details via WhatsApp</p></div></div></div>
 
 <script>
+  // COMPLETE MENU DATA (all categories from original)
   const categoriesData = [
-    {name:"HOT BEVERAGES",timing:"7:00 am–12:00 pm | 4:00 pm–8:00 pm (MINIMUM 5 CUP OF SAME BEVERAGE)",cover:"https://images.unsplash.com/photo-1541167760496-1628856ab772?w=400&h=250&fit=crop",items:[{name:"Coffee / Tea",price:20},{name:"Badam Milk",price:20},{name:"Bournvita / Boost",price:20},{name:"Horlicks",price:20},{name:"Lemon Tea",price:20}]},
-    {name:"BREAKFAST",timing:"6:00 am–4:00 pm",cover:"https://images.unsplash.com/photo-1680359871322-aabe6b33eff5?q=80&w=1169&auto=format&fit=crop",items:[{name:"1 IDLY",price:20},{name:"2 IDLY",price:40},{name:"2 IDLY 1 VADA",price:60},{name:"1 IDLY 1 VADA",price:45},{name:"SINGLE VADA",price:25},{name:"KARA BATH",price:30},{name:"KESARI BATH",price:30},{name:"CHOW CHOW BATH",price:60},{name:"RICE BATH",price:50},{name:"POORI 2",price:60},{name:"RAVA IDLY 1",price:35},{name:"PONGAL",price:60},{name:"BISI BELE BATH",price:60},{name:"CURD VADA",price:30},{name:"MANGALORE BUN 1",price:25},{name:"BONDA SOUP",price:25},{name:"BAJJI / VADA",price:15}]},
-    {name:"CHOICE OF DOSA",timing:"7:00 am–12:00 pm | 4:00 pm–8:00 pm",cover:"https://images.unsplash.com/photo-1694849789325-914b71ab4075?q=80&w=1374&auto=format&fit=crop",items:[{name:"BUTTER MASALA DOSA",price:90},{name:"MASALA DOSA",price:70},{name:"PLAIN DOSA",price:50},{name:"ONION DOSA",price:90},{name:"SET DOSA",price:60},{name:"PAPER MASALA DOSA",price:130},{name:"PAPER PLAIN DOSA",price:100},{name:"RAGI DOSA 2 PS",price:60},{name:"RAVA DOSA",price:70},{name:"RAVA MASALA DOSA",price:80},{name:"NEER DOSA",price:60},{name:"OPEN BUTTER M. DOSA",price:100},{name:"BUTTER PLAIN DOSA",price:70},{name:"GHEE MASALA DOSA",price:90},{name:"BUTTER SET DOSA",price:80},{name:"RAVA ONION DOSA",price:80},{name:"SET MASALA DOSA",price:90},{name:"BUTTER SET MASALA DOSA",price:100},{name:"SINGLE SET MASALA DOSA",price:45},{name:"SINGLE BUTTER SET MASALA DOSA",price:55}]},
-    {name:"MEALS",timing:"South: 12pm–4pm , North:12pm-4pm | 7pm-10pm",cover:"https://images.unsplash.com/photo-1742281257687-092746ad6021?q=80&w=1374&auto=format&fit=crop",items:[{name:"SOUTH MEALS",price:100},{name:"NORTH MEALS",price:130}]},
-    {name:"EVENING SPECIAL",timing:"4:00 pm onwards",cover:"https://images.unsplash.com/photo-1756757077703-26dc3ba7e853?q=80&w=1170&auto=format&fit=crop",items:[{name:"SABBAKKI IDLY",price:35},{name:"SHAVIGE",price:60},{name:"KARABATH (SPECIAL)",price:35},{name:"AVALAKKI UPMA",price:50}]},
-    {name:"SOUPS",timing:"12:00pm-10pm",cover:"https://images.unsplash.com/photo-1613844237701-8f3664fc2eff?q=80&w=1364&auto=format&fit=crop",items:[{name:"TOMATO SOUP",price:60},{name:"CREAM OF VEG",price:70},{name:"CREAM OF MUSHROOM",price:70},{name:"SWEET CORN SOUP",price:60},{name:"HOT AND SOUR",price:70},{name:"VEG SOUP",price:60},{name:"LEMON KOREAN",price:80},{name:"MANCHOW SOUP",price:70},{name:"SWEET CORN VEG SOUP",price:70}]},
-    {name:"STARTERS",timing:"12:00 pm–10:30 pm",cover:"https://images.unsplash.com/photo-1690401767645-595de0e0e5f8?q=80&w=1313&auto=format&fit=crop",items:[{name:"GOBI MANCHURIAN",price:80},{name:"GOBI CHILLY",price:90},{name:"GOBI PEPPER DRY",price:100},{name:"GOBI 65",price:100},{name:"BABY CORN MANCHURIAN",price:100},{name:"BABY CORN CHILLY",price:120},{name:"BABY CORN PEPPER DRY",price:130},{name:"BABY CORN 65",price:130},{name:"MUSHROOM MANCHURIAN",price:110},{name:"MUSHROOM CHILLY",price:120},{name:"MUSHROOM PEPPER DRY",price:130},{name:"MUSHROOM 65",price:130},{name:"PANEER MANCHURIAN",price:130},{name:"PANEER CHILLY",price:140},{name:"PANEER PEPPER DRY",price:150},{name:"PANEER 65",price:150},{name:"ALOO MANCHURIAN",price:100},{name:"ALOO CHILLY",price:110},{name:"ALOO 65",price:120},{name:"MASALA PAPAD",price:40},{name:"FINGER CHIPS",price:70},{name:"VEG BALL MANCHURIAN",price:150},{name:"SPANISH MANCHURIAN",price:150},{name:"PALAK GOBI",price:140}]},
-    {name:"KABAB SPECIAL",timing:"12:00 pm–10:20 pm",cover:"https://images.unsplash.com/photo-1674622720208-2a67da6ff4e8?q=80&w=1170&auto=format&fit=crop",items:[{name:"MUSHROOM KABAB",price:150},{name:"PANEER KABAB",price:170},{name:"ALOO KABAB",price:150}]},
-    {name:"CHINESE RICE & NOODLES",timing:"12:00 pm–10:30 pm",cover:"https://images.unsplash.com/photo-1565976469782-7c92daebc42e?q=80&w=1287&auto=format&fit=crop",items:[{name:"VEG FRIED RICE",price:100},{name:"PANEER FRIED RICE",price:130},{name:"MUSHROOM FRIED RICE",price:120},{name:"BABY CORN FRIED RICE",price:120},{name:"SCHEZWAN FRIED RICE",price:120},{name:"JEERA RICE",price:110},{name:"GINGER FRIED RICE",price:110},{name:"GARLIC FRIED RICE",price:110},{name:"GHEE RICE",price:110},{name:"CURD RICE",price:50},{name:"VEG NOODLES",price:90},{name:"PANEER NOODLES",price:120},{name:"MUSHROOM NOODLES",price:110},{name:"SCHEZWAN NOODLES",price:110}]},
-    {name:"NORTH CURRY",timing:"12pm–4pm | 7pm–10:30pm",cover:"https://images.unsplash.com/photo-1627366422957-3efa9c6df0fc?q=80&w=1170&auto=format&fit=crop",items:[{name:"DAL FRY",price:80},{name:"DAL TADKA",price:90},{name:"DAL KOLLAPURI",price:110},{name:"DAL PUNJABI",price:110},{name:"DAL PALAK",price:130},{name:"GOBI MASALA",price:150},{name:"PLAIN PALAK",price:130},{name:"ALOO PALAK",price:140},{name:"CAPSICUM MASALA",price:150},{name:"GREEN PEAS MASALA",price:150},{name:"MIX VEG CURRY",price:170},{name:"VEG HYDERABADI",price:190},{name:"VEG DO-PYAZA",price:180},{name:"VEG KURMA",price:180},{name:"MUSHROOM MASALA",price:180},{name:"BABY CORN GREEN MASALA",price:160},{name:"PALAK PANEER",price:190},{name:"PANEER BUTTER MASALA",price:180},{name:"PANEER BURJI",price:230},{name:"PANEER KURMA",price:200},{name:"PANEER MATAR",price:200},{name:"PANEER TIKKA MASALA",price:230},{name:"PANEER KOFTA",price:220},{name:"VEG KOFTA",price:170},{name:"VEG PEPPER MASALA",price:190},{name:"VEG SHAHI PANEER",price:200},{name:"VEG SHASHI KURMA",price:190},{name:"KAAJU MASALA",price:220},{name:"KAAJU BUTTER MASALA",price:240},{name:"KAAJU PANEER",price:270},{name:"PANEER CHAT PAT",price:240}]},
-    {name:"KADAI SPECIAL",timing:"12pm–4pm | 7pm–10:30pm",cover:"https://images.unsplash.com/photo-1750190624930-3728a6ed1642?q=80&w=1170&auto=format&fit=crop",items:[{name:"VEG KADAI",price:180},{name:"PANEER KADAI",price:200},{name:"MUSHROOM KADAI",price:190},{name:"VEG HARIYALI",price:200},{name:"VEG KOLLAPURI",price:180},{name:"KAAJU KOLLAPURI",price:220},{name:"MUSHROOM KOLLAPURI",price:190},{name:"PANEER KOLLAPURI",price:200}]},
-    {name:"ROTI & PAROTA",timing:"12pm–4pm | 7pm–10:30pm",cover:"https://images.unsplash.com/photo-1718874635150-85070e62fcf1?q=80&w=1170&auto=format&fit=crop",items:[{name:"ROTI",price:25},{name:"BUTTER ROTI",price:35},{name:"METHI ROTI",price:30},{name:"METI BUTTER ROTI",price:40},{name:"PUDINA ROTI",price:45},{name:"KULCHA",price:30},{name:"BUTTER KULCHA",price:40},{name:"PUDINA KULCHA",price:45},{name:"STUFFED KULCHA",price:70},{name:"NAAN",price:30},{name:"BUTTER NAAN",price:40},{name:"GARLIC NAAN",price:45},{name:"ROTI CURRY",price:80},{name:"BUTTER ROTI CURRY",price:100},{name:"LACHHA PAROTA",price:40},{name:"ALOO PAROTA",price:90},{name:"VEG PAROTA",price:90},{name:"PANEER PAROTA",price:120},{name:"GOBI PAROTA",price:100}]},
-    {name:"BIRIYANI SPECIAL",timing:"12pm–4pm | 7pm–10:30pm",cover:"https://images.unsplash.com/photo-1630409346824-4f0e7b080087?q=80&w=1246&auto=format&fit=crop",items:[{name:"VEG BIRIYANI",price:130},{name:"VEG PALAV",price:100},{name:"VEG HYDERABADI BIRIYANI",price:150},{name:"MUGHLAI BIRIYANI",price:150},{name:"MUSHROOM BIRIYANI",price:150},{name:"PEAS PALAV",price:110},{name:"PEAS BIRIYANI",price:120},{name:"PALAK RICE",price:130},{name:"DAL KHICHDI",price:130},{name:"PALAK KHICHDI",price:140},{name:"HANDI BIRIYANI",price:140},{name:"PANEER BIRIYANI",price:150},{name:"KAAJU PALAV",price:160},{name:"KAAJU PANEER PALAV",price:170}]}
+    {name:"HOT BEVERAGES",timing:"7:00 am–12:00 pm | 4:00 pm–8:00 pm",cover:"https://images.unsplash.com/photo-1541167760496-1628856ab772?w=400&h=250&fit=crop",items:[{name:"Coffee / Tea",price:20},{name:"Badam Milk",price:20},{name:"Bournvita / Boost",price:20},{name:"Horlicks",price:20},{name:"Lemon Tea",price:20}]},
+    {name:"BREAKFAST",timing:"6:00 am–4:00 pm",cover:"https://images.unsplash.com/photo-1680359871322-aabe6b33eff5?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",items:[{name:"1 IDLY",price:20},{name:"2 IDLY",price:40},{name:"2 IDLY 1 VADA",price:60},{name:"1 IDLY 1 VADA",price:45},{name:"SINGLE VADA",price:25},{name:"KARA BATH",price:30},{name:"KESARI BATH",price:30},{name:"CHOW CHOW BATH",price:60},{name:"RICE BATH",price:50},{name:"POORI 2",price:60},{name:"RAVA IDLY 1",price:35},{name:"PONGAL",price:60},{name:"BISI BELE BATH",price:60},{name:"CURD VADA",price:30},{name:"MANGALORE BUN 1",price:25},{name:"BONDA SOUP",price:25},{name:"BAJJI / VADA",price:15}]},
+    {name:"CHOICE OF DOSA",timing:"7:00 am–12:00 pm | 4:00 pm–8:00 pm",cover:"https://images.unsplash.com/photo-1694849789325-914b71ab4075?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",items:[{name:"BUTTER MASALA DOSA",price:90},{name:"MASALA DOSA",price:70},{name:"PLAIN DOSA",price:50},{name:"ONION DOSA",price:90},{name:"SET DOSA",price:60},{name:"PAPER MASALA DOSA",price:130},{name:"PAPER PLAIN DOSA",price:100},{name:"RAGI DOSA 2 PS",price:60},{name:"RAVA DOSA",price:70},{name:"RAVA MASALA DOSA",price:80},{name:"NEER DOSA",price:60},{name:"OPEN BUTTER M. DOSA",price:100},{name:"BUTTER PLAIN DOSA",price:70},{name:"GHEE MASALA DOSA",price:90},{name:"BUTTER SET DOSA",price:80},{name:"RAVA ONION DOSA",price:80},{name:"SET MASALA DOSA",price:80},{name:"BUTTER SET MASALA DOSA",price:100},{name:"SINGLE SET MASALA DOSA",price:45},{name:"SINGLE BUTTER SET MASALA DOSA",price:55}]},
+    {name:"MEALS",timing:"South: 12pm–4pm , North:12pm-4pm | 7pm-10pm", cover:"https://images.unsplash.com/photo-1742281257687-092746ad6021?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" ,    items:[{name:"SOUTH MEALS",price:100},{name:"NORTH MEALS",price:130}]},
+    {name:"EVENING SPECIAL",timing:"4:00 pm onwards",cover:"https://images.unsplash.com/photo-1756757077703-26dc3ba7e853?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",items:[{name:"SABBAKKI IDLY",price:35},{name:"SHAVIGE",price:60},{name:"KARABATH (SPECIAL)",price:35},{name:"AVALAKKI UPMA",price:50}]},
+    {name:"SOUPS",timing:"12:00pm-10pm",cover:"https://images.unsplash.com/photo-1613844237701-8f3664fc2eff?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",items:[{name:"TOMATO SOUP",price:60},{name:"CREAM OF VEG",price:70},{name:"CREAM OF MUSHROOM",price:70},{name:"SWEET CORN SOUP",price:60},{name:"HOT AND SOUR",price:70},{name:"VEG SOUP",price:60},{name:"LEMON KOREAN",price:80},{name:"MANCHOW SOUP",price:70},{name:"SWEET CORN VEG SOUP",price:70}]},
+    {name:"STARTERS",timing:"12:00 pm–10:30 pm",cover:"https://images.unsplash.com/photo-1690401767645-595de0e0e5f8?q=80&w=1313&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",items:[{name:"GOBI MANCHURIAN",price:80},{name:"GOBI CHILLY",price:90},{name:"GOBI PEPPER DRY",price:100},{name:"GOBI 65",price:100},{name:"BABY CORN MANCHURIAN",price:100},{name:"BABY CORN CHILLY",price:120},{name:"BABY CORN PEPPER DRY",price:130},{name:"BABY CORN 65",price:130},{name:"MUSHROOM MANCHURIAN",price:110},{name:"MUSHROOM CHILLY",price:120},{name:"MUSHROOM PEPPER DRY",price:130},{name:"MUSHROOM 65",price:130},{name:"PANEER MANCHURIAN",price:130},{name:"PANEER CHILLY",price:140},{name:"PANEER PEPPER DRY",price:150},{name:"PANEER 65",price:150},{name:"ALOO MANCHURIAN",price:100},{name:"ALOO CHILLY",price:110},{name:"ALOO 65",price:120},{name:"MASALA PAPAD",price:40},{name:"FINGER CHIPS",price:70},{name:"VEG BALL MANCHURIAN",price:150},{name:"SPANISH MANCHURIAN",price:150},{name:"PALAK GOBI",price:140}]},
+    {name:"KABAB SPECIAL",timing:"12:00 pm–10:20 pm",cover:"https://images.unsplash.com/photo-1674622720208-2a67da6ff4e8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",items:[{name:"MUSHROOM KABAB",price:150},{name:"PANEER KABAB",price:170},{name:"ALOO KABAB",price:150}]},
+    {name:"CHINESE RICE & NOODLES",timing:"12:00 pm–10:30 pm",cover:"https://images.unsplash.com/photo-1565976469782-7c92daebc42e?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",items:[{name:"VEG FRIED RICE",price:100},{name:"PANEER FRIED RICE",price:130},{name:"MUSHROOM FRIED RICE",price:120},{name:"BABY CORN FRIED RICE",price:120},{name:"SCHEZWAN FRIED RICE",price:120},{name:"JEERA RICE",price:110},{name:"GINGER FRIED RICE",price:110},{name:"GARLIC FRIED RICE",price:110},{name:"GHEE RICE",price:110},{name:"CURD RICE",price:50},{name:"VEG NOODLES",price:90},{name:"PANEER NOODLES",price:120},{name:"MUSHROOM NOODLES",price:110},{name:"SCHEZWAN NOODLES",price:110}]},
+    {name:"NORTH CURRY",timing:"12pm–4pm | 7pm–10:30pm",cover:"https://images.unsplash.com/photo-1627366422957-3efa9c6df0fc?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",items:[{name:"DAL FRY",price:80},{name:"DAL TADKA",price:90},{name:"DAL KOLLAPURI",price:110},{name:"DAL PUNJABI",price:110},{name:"DAL PALAK",price:130},{name:"GOBI MASALA",price:150},{name:"PLAIN PALAK",price:130},{name:"ALOO PALAK",price:140},{name:"CAPSICUM MASALA",price:150},{name:"GREEN PEAS MASALA",price:150},{name:"MIX VEG CURRY",price:170},{name:"VEG HYDERABADI",price:190},{name:"VEG DO-PYAZA",price:180},{name:"VEG KURMA",price:180},{name:"MUSHROOM MASALA",price:180},{name:"BABY CORN GREEN MASALA",price:160},{name:"PALAK PANEER",price:190},{name:"PANEER BUTTER MASALA",price:180},{name:"PANEER BURJI",price:230},{name:"PANEER KURMA",price:200},{name:"PANEER MATAR",price:200},{name:"PANEER TIKKA MASALA",price:230},{name:"PANEER KOFTA",price:220},{name:"VEG KOFTA",price:170},{name:"VEG PEPPER MASALA",price:190},{name:"VEG SHAHI PANEER",price:200},{name:"VEG SHASHI KURMA",price:190},{name:"KAAJU MASALA",price:220},{name:"KAAJU BUTTER MASALA",price:240},{name:"KAAJU PANEER",price:270},{name:"PANEER CHAT PAT",price:240}]},
+    {name:"KADAI SPECIAL",timing:"12pm–4pm | 7pm–10:30pm",cover:"https://images.unsplash.com/photo-1750190624930-3728a6ed1642?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",items:[{name:"VEG KADAI",price:180},{name:"PANEER KADAI",price:200},{name:"MUSHROOM KADAI",price:190},{name:"VEG HARIYALI",price:200},{name:"VEG KOLLAPURI",price:180},{name:"KAAJU KOLLAPURI",price:220},{name:"MUSHROOM KOLLAPURI",price:190},{name:"PANEER KOLLAPURI",price:200}]},
+    {name:"ROTI & PAROTA",timing:"12pm–4pm | 7pm–10:30pm",cover:"https://images.unsplash.com/photo-1718874635150-85070e62fcf1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",items:[{name:"ROTI",price:25},{name:"BUTTER ROTI",price:35},{name:"METHI ROTI",price:30},{name:"METI BUTTER ROTI",price:40},{name:"PUDINA ROTI",price:45},{name:"KULCHA",price:30},{name:"BUTTER KULCHA",price:40},{name:"PUDINA KULCHA",price:45},{name:"STUFFED KULCHA",price:70},{name:"NAAN",price:30},{name:"BUTTER NAAN",price:40},{name:"GARLIC NAAN",price:45},{name:"ROTI CURRY",price:80},{name:"BUTTER ROTI CURRY",price:100},{name:"LACHHA PAROTA",price:40},{name:"ALOO PAROTA",price:90},{name:"VEG PAROTA",price:90},{name:"PANEER PAROTA",price:120},{name:"GOBI PAROTA",price:100}]},
+    {name:"BIRIYANI SPECIAL",timing:"12pm–4pm | 7pm–10:30pm",cover:"https://images.unsplash.com/photo-1630409346824-4f0e7b080087?q=80&w=1246&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",items:[{name:"VEG BIRIYANI",price:130},{name:"VEG PALAV",price:100},{name:"VEG HYDERABADI BIRIYANI",price:150},{name:"MUGHLAI BIRIYANI",price:150},{name:"MUSHROOM BIRIYANI",price:150},{name:"PEAS PALAV",price:110},{name:"PEAS BIRIYANI",price:120},{name:"PALAK RICE",price:130},{name:"DAL KHICHDI",price:130},{name:"PALAK KHICHDI",price:140},{name:"HANDI BIRIYANI",price:140},{name:"PANEER BIRIYANI",price:150},{name:"KAAJU PALAV",price:160},{name:"KAAJU PANEER PALAV",price:170}]}
   ];
 
   let cart = [];
@@ -316,6 +681,7 @@
   });
 
   function showCategory(cat) {
+    const panel = document.getElementById('menuPanel');
     document.getElementById('activeCatName').textContent = cat.name;
     document.getElementById('activeTimings').textContent = cat.timing;
     const cont = document.getElementById('itemsContainer');
@@ -323,112 +689,169 @@
     cat.items.forEach(item => {
       const div = document.createElement('div');
       div.className = 'menu-item';
-      div.innerHTML = `<div><div class="item-name">${item.name}</div><div class="item-price">₹${item.price}</div></div><button class="add-btn">+ Add</button>`;
+      div.innerHTML = `<div><div class="item-name">${item.name}</div><div class="item-price" style="font-weight:bold !important;">₹${item.price}</div></div><button class="add-btn">+ Add</button>`;
       div.querySelector('.add-btn').addEventListener('click', (e) => { e.stopPropagation(); addToCart(cat.name, item.name, item.price); e.target.textContent = '✓ Added'; e.target.classList.add('added'); setTimeout(() => { e.target.textContent = '+ Add'; e.target.classList.remove('added'); }, 800); });
       cont.appendChild(div);
     });
-    document.getElementById('menuPanel').style.display = 'block';
-    setTimeout(() => document.getElementById('menuPanel').scrollIntoView({behavior:'smooth', block:'start'}), 80);
+    panel.style.display = 'block';
+    setTimeout(() => { panel.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80);
   }
 
-  function addToCart(cat, name, price) { 
-    let ex = cart.find(i => i.name === name && i.cat === cat); 
-    if (ex) ex.qty++; else cart.push({cat, name, price, qty:1}); 
-    updateCartBar(); 
+  function addToCart(cat, name, price) { let ex = cart.find(i => i.name === name && i.cat === cat); if (ex) ex.qty++; else cart.push({ cat, name, price, qty: 1 }); updateCartBar(); }
+  function getTotal() { return cart.reduce((s,i)=>s+i.price*i.qty,0); }
+
+  // ---- NEW: parcel charge calculator ----
+  function calculateParcelCharge(items) {
+    let parcel = 0;
+    let hasIdliVada = false;
+    let hasCurdVada = false;
+    const idliVadaNames = ["1 IDLY","2 IDLY","2 IDLY 1 VADA","1 IDLY 1 VADA","SINGLE VADA"];
+    items.forEach(item => {
+      let unit = 0;
+      if (item.cat === "CHINESE RICE & NOODLES") {
+        unit = 10;   // all chinese items +10 per qty
+      } else if (item.cat === "NORTH CURRY") {
+        unit = 10;   // north indian curries +10 per qty
+      } else if (item.cat === "ROTI & PAROTA") {
+        unit = 0;    // no charge for roti/breads
+      } else if (item.cat === "CHOICE OF DOSA") {
+        unit = 5;    // per dosa 5₹
+      } else if (item.cat === "BREAKFAST") {
+        if (item.name === "CURD VADA") {
+          unit = 0;
+          hasCurdVada = true;   // flat 5₹ handled later
+        } else if (item.name === "BISI BELE BATH" || item.name === "PONGAL") {
+          unit = 10;
+        } else if (idliVadaNames.includes(item.name)) {
+          unit = 0;
+          hasIdliVada = true;   // flat 5₹ handled later
+        } else {
+          unit = 5;   // rest of breakfast 5₹ per unit
+        }
+      } else {
+        unit = 0;   // other categories no parcel charge
+      }
+      parcel += unit * item.qty;
+    });
+    if (hasCurdVada) parcel += 5;
+    if (hasIdliVada) parcel += 5;
+    return parcel;
   }
 
-  function validateBeverageMinQty() {
-    const invalid = cart.filter(i => i.cat === "HOT BEVERAGES" && i.qty < 5);
-    if (invalid.length) {
-      alert(`⚠️ Minimum 5 cups per beverage.\nPlease increase:\n${invalid.map(i=>`${i.name} (${i.qty})`).join('\n')}`);
-      return false;
-    }
-    return true;
-  }
-
-  function getTotal() { return cart.reduce((s,i)=>s + i.price*i.qty, 0); }
-  function updateCartBar() { 
-    let t = cart.reduce((s,i)=>s+i.qty,0); 
-    let bar = document.getElementById('cartBar'); 
-    if(t===0){ bar.style.display='none'; return; } 
-    bar.style.display='block'; 
-    document.getElementById('cartCount').textContent = t;
-    document.getElementById('cartSummaryText').textContent = t===1?'item in cart':'items in cart';
-    document.getElementById('cartTotalPreview').textContent = getTotal();
+  function updateCartBar() {
+    let t = cart.reduce((s,i)=>s+i.qty,0);
+    let bar = document.getElementById('cartBar');
+    if(t===0){bar.style.display='none';return;}
+    bar.style.display='block';
+    document.getElementById('cartCount').textContent=t;
+    document.getElementById('cartSummaryText').textContent=t===1?'item in cart':'items in cart';
+    document.getElementById('cartTotalPreview').textContent=getTotal();
     refreshModal();
   }
+
   function refreshModal() {
     let cont = document.getElementById('modalCartItems');
     let bill = document.getElementById('billBox');
-    if(!cart.length) {
-      cont.innerHTML = '<div style="text-align:center;padding:2rem;"><i class="fas fa-shopping-bag" style="font-size:2rem;"></i><p style="margin-top:0.5rem;">Your cart is empty</p></div>';
-      bill.style.display='none'; return;
+    if(cart.length===0){
+      cont.innerHTML='<div class="empty-cart"><i class="fas fa-shopping-bag"></i><p>Your cart is empty.<br>Browse the menu and add items!</p></div>';
+      bill.style.display='none';
+      return;
     }
     bill.style.display='block';
-    let html = '';
-    cart.forEach((item,idx) => {
-      html += `<div class="cart-item-row"><div><div class="cir-name">${item.name}</div><small style="color:var(--text-muted);">${item.cat}</small></div><div style="display:flex; align-items:center; gap:0.4rem;"><button class="qty-btn" data-idx="${idx}" data-act="dec">−</button><span style="min-width:22px; text-align:center;">${item.qty}</span><button class="qty-btn" data-idx="${idx}" data-act="inc">+</button><button class="qty-btn" data-idx="${idx}" data-act="del">🗑</button></div><div class="cir-price">₹${item.price*item.qty}</div></div>`;
+    let html='';
+    cart.forEach((item,idx)=>{
+      html+=`<div class="cart-item-row"><div><div class="cir-name">${item.name}</div><div class="cir-cat" style="font-size:0.7rem;color:var(--text-muted);">${item.cat}</div></div><div class="qty-ctrl"><button class="qty-btn" data-idx="${idx}" data-act="dec">−</button><span class="qty-num" style="min-width:20px;text-align:center;font-weight:bold;">${item.qty}</span><button class="qty-btn" data-idx="${idx}" data-act="inc">+</button><button class="qty-btn qty-del" data-idx="${idx}" data-act="del">🗑</button></div><div class="cir-price">₹${item.price*item.qty}</div></div>`;
     });
-    cont.innerHTML = html;
-    let sub = getTotal();
-    document.getElementById('modalSubtotal').textContent = sub;
-    document.getElementById('modalGrandTotal').textContent = sub+30;
-    cont.querySelectorAll('.qty-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        let idx = btn.dataset.idx;
-        if(btn.dataset.act === 'inc') cart[idx].qty++;
-        else if(btn.dataset.act === 'dec') { if(cart[idx].qty>1) cart[idx].qty--; else cart.splice(idx,1); }
-        else if(btn.dataset.act === 'del') cart.splice(idx,1);
+    cont.innerHTML=html;
+
+    let sub=getTotal();
+    let parcel = calculateParcelCharge(cart);
+    let grand = sub + 30 + parcel;
+
+    document.getElementById('modalSubtotal').textContent=sub;
+    document.getElementById('modalParcel').textContent=parcel;
+    if (parcel > 0) {
+      document.getElementById('parcelRow').style.display = '';
+    } else {
+      document.getElementById('parcelRow').style.display = 'none';
+    }
+    document.getElementById('modalGrandTotal').textContent=grand;
+
+    cont.querySelectorAll('.qty-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        let idx=parseInt(btn.dataset.idx);
+        if(btn.dataset.act==='inc')cart[idx].qty++;
+        else if(btn.dataset.act==='dec'){
+          if(cart[idx].qty>1)cart[idx].qty--;
+          else cart.splice(idx,1);
+        }
+        else if(btn.dataset.act==='del')cart.splice(idx,1);
         updateCartBar();
       });
     });
   }
 
-  document.getElementById('goToCartBtn').addEventListener('click', ()=>{ refreshModal(); document.getElementById('orderModal').classList.add('open'); });
-  document.getElementById('closeModalBtn').addEventListener('click', ()=> document.getElementById('orderModal').classList.remove('open'));
-  document.getElementById('upiPaymentBtn').addEventListener('click', ()=>{
-    if(!cart.length) return alert('Cart empty');
-    if(!validateBeverageMinQty()) return;
-    window.location.href = `upi://pay?pa=9964054005@ybl&pn=Shree%20Srinidhi%20Upachar&am=${getTotal()+30}&cu=INR`;
+  document.getElementById('goToCartBtn').addEventListener('click',()=>{
+    refreshModal();
+    document.getElementById('orderModal').classList.add('open');
+  });
+  document.getElementById('closeModalBtn').addEventListener('click',()=>document.getElementById('orderModal').classList.remove('open'));
+
+  document.getElementById('upiPaymentBtn').addEventListener('click',()=>{
+    if(cart.length){
+      let parcel = calculateParcelCharge(cart);
+      let total = getTotal() + 30 + parcel;
+      window.location.href=`upi://pay?pa=9964054005@ybl&pn=Shree%20Srinidhi%20Upachar&am=${total}&cu=INR`;
+    } else alert('Cart empty');
   });
 
   let currentLat=null, currentLng=null, currentAddress="Not captured yet", googleMapsLink="";
-  document.getElementById('sendWhatsAppBtn').addEventListener('click', ()=>{
+  document.getElementById('sendWhatsAppBtn').addEventListener('click',()=>{
     if(!cart.length) return alert('Cart empty');
-    if(!validateBeverageMinQty()) return;
-    if(!currentLat) return alert('Please capture your live location first.');
-    let msg = `🍽️ *SHREE SRINIDHI UPACHAR*\n📍 #10/3591, Opp. Bus Stand, Mysore Road, Kollegal\n\n*ORDER:*\n`;
-    cart.forEach(i=> msg += `• ${i.name} ×${i.qty} = ₹${i.price*i.qty}\n`);
+    if(!currentLat){alert('Please capture your live location first.');return;}
+
     let sub = getTotal();
-    msg += `\nSubtotal: ₹${sub}\nDelivery: ₹30\n*TOTAL: ₹${sub+30}*\n\n📍 *Address:* ${currentAddress}\n📍 *Live Location:* ${googleMapsLink}`;
-    window.open(`https://wa.me/919071047555?text=${encodeURIComponent(msg)}`, '_blank');
+    let parcel = calculateParcelCharge(cart);
+    let grand = sub + 30 + parcel;
+
+    let msg=`🍽️ *SHREE SRINIDHI UPACHAR* 🍽️\n📍 #10/3591, Opp. Bus Stand, Mysore Road, Kollegal\n\n*YOUR ORDER:*\n`;
+    cart.forEach(i=>msg+=`• ${i.name} ×${i.qty} = ₹${i.price*i.qty}\n`);
+    msg+=`\nSubtotal: ₹${sub}\n`;
+    if (parcel > 0) msg += `Parcel Charge: ₹${parcel}\n`;
+    msg += `Delivery: ₹30\n*TOTAL: ₹${grand}*\n\n📍 *Delivery Address:* ${currentAddress}\n\n📍 *Live Location (Google Maps):* ${googleMapsLink}\n\n🙏 Thank you!`;
+    window.open(`https://wa.me/919964054005?text=${encodeURIComponent(msg)}`,'_blank');
   });
 
-  document.getElementById('getLiveLocationBtn').addEventListener('click', function(){
-    if(!navigator.geolocation) return alert('Geolocation not supported');
-    this.classList.add('loading'); document.getElementById('locBtnText').textContent='Getting location…';
-    navigator.geolocation.getCurrentPosition(pos => {
-      currentLat = pos.coords.latitude; currentLng = pos.coords.longitude;
-      googleMapsLink = `https://www.google.com/maps?q=${currentLat},${currentLng}`;
-      document.getElementById('locBtnText').textContent = 'Location Captured ✓';
-      document.getElementById('map').innerHTML = `<div style="background:var(--cream-dark); padding:1.5rem; text-align:center; border-radius:var(--radius-md); cursor:pointer;" onclick="window.open('${googleMapsLink}','_blank')"><i class="fas fa-map-marker-alt" style="color:#c85f1a; font-size:2rem;"></i><p style="margin-top:0.4rem;">📍 Tap to open Google Maps</p><small>${currentLat.toFixed(5)}, ${currentLng.toFixed(5)}</small></div>`;
-      fetch(`https://nominatim.openstreetmap.org/reverse?lat=${currentLat}&lon=${currentLng}&format=json`).then(r=>r.json()).then(data => {
-        currentAddress = data.display_name || `${currentLat.toFixed(5)}, ${currentLng.toFixed(5)}`;
-        document.getElementById('locationAddress').innerHTML = `📍 ${currentAddress}<br><a href="${googleMapsLink}" target="_blank" style="color:#c85f1a; font-weight:bold;">🔗 Open in Google Maps</a>`;
+  document.getElementById('getLiveLocationBtn').addEventListener('click',function(){
+    if(!navigator.geolocation)return alert('Geolocation not supported');
+    this.classList.add('loading');
+    document.getElementById('locBtnText').textContent='Getting location…';
+    navigator.geolocation.getCurrentPosition(pos=>{
+      currentLat=pos.coords.latitude; currentLng=pos.coords.longitude;
+      googleMapsLink=`https://www.google.com/maps?q=${currentLat},${currentLng}`;
+      document.getElementById('locBtnText').textContent='Location Captured ✓';
+      let mapDiv=document.getElementById('map');
+      mapDiv.innerHTML=`<div class="map-placeholder" style="cursor:pointer;" onclick="window.open('${googleMapsLink}', '_blank')"><i class="fas fa-map-marker-alt" style="color:#c85f1a; font-size:2rem;"></i><p>📍 Tap to open Google Maps</p><small style="font-size:11px">${currentLat.toFixed(5)}, ${currentLng.toFixed(5)}</small></div>`;
+      fetch(`https://nominatim.openstreetmap.org/reverse?lat=${currentLat}&lon=${currentLng}&format=json`).then(r=>r.json()).then(data=>{
+        currentAddress=data.display_name||`${currentLat.toFixed(5)}, ${currentLng.toFixed(5)}`;
+        document.getElementById('locationAddress').innerHTML=`📍 ${currentAddress}<br><a href="${googleMapsLink}" target="_blank" style="color:#c85f1a; text-decoration:underline; font-weight:bold;">🔗 Open in Google Maps</a>`;
       }).catch(()=>{
-        currentAddress = `${currentLat.toFixed(5)}, ${currentLng.toFixed(5)}`;
-        document.getElementById('locationAddress').innerHTML = `📍 ${currentAddress}<br><a href="${googleMapsLink}" target="_blank" style="color:#c85f1a; font-weight:bold;">🔗 Open in Google Maps</a>`;
+        currentAddress=`${currentLat.toFixed(5)}, ${currentLng.toFixed(5)}`;
+        document.getElementById('locationAddress').innerHTML=`📍 ${currentAddress}<br><a href="${googleMapsLink}" target="_blank" style="color:#c85f1a; text-decoration:underline; font-weight:bold;">🔗 Open in Google Maps</a>`;
       });
       this.classList.remove('loading');
-    }, err => {
-      this.classList.remove('loading'); document.getElementById('locBtnText').textContent='Capture My Live Location';
-      alert('Location permission denied.');
+    },err=>{
+      this.classList.remove('loading');
+      document.getElementById('locBtnText').textContent='Capture My Live Location';
+      alert('Location permission denied. Please allow location access.');
     });
   });
 
-  const preloader = document.getElementById('preloader'), preVid = document.getElementById('preloaderVideo'), main = document.getElementById('mainContent');
-  function hidePreloader() { preloader.style.opacity = '0'; setTimeout(()=>{ preloader.style.display='none'; main.style.display='block'; }, 900); }
-  if(preVid){ preVid.play().catch(e=>console.log); let t=setTimeout(hidePreloader,7000); preVid.addEventListener('ended', ()=>{ clearTimeout(t); hidePreloader(); }, {once:true}); } else setTimeout(hidePreloader,3000);
+  const preloaderDiv = document.getElementById('preloader');
+  const preVid = document.getElementById('preloaderVideo');
+  const mainC = document.getElementById('mainContent');
+  function hidePreloader() { preloaderDiv.style.opacity = '0'; setTimeout(()=>{preloaderDiv.style.display='none'; mainC.style.display='block';},900); }
+  if(preVid){ preVid.play().catch(e=>console.log); let timer=setTimeout(hidePreloader,7000); preVid.addEventListener('ended',()=>{clearTimeout(timer); hidePreloader();},{once:true}); } else { setTimeout(hidePreloader,3000); }
 </script>
 </body>
-</html>
+  </html>

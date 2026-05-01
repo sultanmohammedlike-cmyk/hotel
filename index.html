@@ -604,6 +604,12 @@
     </div>
   </nav>
   <div class="hero-ticker"><span class="ticker-inner">✦ Home Delivery Available &nbsp;&nbsp;✦ Pure Vegetarian &nbsp;&nbsp;✦ Catering for All Occasions &nbsp;&nbsp;✦ Call +91 9964054005 &nbsp;&nbsp;✦ Home Delivery Available &nbsp;&nbsp;✦ Pure Vegetarian</span></div>
+
+  <!-- SHOP TIMINGS NOTIFICATION -->
+  <div style="background:#fff3cd;border-bottom:2px solid #ffc107;color:#7a5800;text-align:center;padding:0.55rem 1rem;font-weight:bold;font-size:0.88rem;letter-spacing:0.2px;">
+    🕗 Shop Timings: <span style="color:#9e4510;">8:00 AM – 10:30 PM</span> &nbsp;|&nbsp; Open All Days
+  </div>
+
   <div class="container">
     <div class="catering-banner">
       <div class="catering-left"><div class="catering-icon"><i class="fas fa-concierge-bell"></i></div><div class="catering-info"><strong>Catering Services — All Occasions</strong><span>Weddings · Birthdays · Corporate Events · Functions</span></div></div>
@@ -648,7 +654,6 @@
 <div class="modal-overlay" id="orderModal"><div class="modal-sheet"><div class="modal-handle"></div><div class="modal-title-row"><div class="modal-title">Your Order</div><button class="close-modal" id="closeModalBtn"><i class="fas fa-times"></i></button></div><div id="modalCartItems"></div><div class="bill-box" id="billBox" style="display:none;">
     <div class="bill-row"><span>Subtotal</span><span>₹<span id="modalSubtotal">0</span></span></div>
     <div class="bill-row" id="parcelRow" style="display:none;"><span>Parcel Charge</span><span>₹<span id="modalParcel">0</span></span></div>
-    <div class="bill-row"><span>Delivery charge</span><span>₹30</span></div>
     <div class="bill-row bill-total-row"><span>Grand Total</span><span>₹<span id="modalGrandTotal">0</span></span></div>
 </div><div class="location-section"><div class="loc-label"><i class="fas fa-map-marker-alt"></i> Delivery Location</div><button class="get-loc-btn" id="getLiveLocationBtn"><i class="fas fa-crosshairs"></i> <span id="locBtnText">Capture My Live Location</span></button><div id="map"><div class="map-placeholder"><i class="fas fa-map"></i><p>Tap above to show your location</p></div></div><div class="loc-address" id="locationAddress">📍 Location not captured yet</div></div><div class="action-btns"><button class="btn-upi" id="upiPaymentBtn"><i class="fas fa-mobile-alt"></i> Pay via UPI (PhonePe / GPay)</button><button class="btn-whatsapp" id="sendWhatsAppBtn"><i class="fab fa-whatsapp"></i> Confirm & Send on WhatsApp</button><p class="order-note">UPI payment with exact bill amount · Or send order details via WhatsApp</p></div></div></div>
 
@@ -699,10 +704,10 @@
   function addToCart(cat, name, price) { let ex = cart.find(i => i.name === name && i.cat === cat); if (ex) ex.qty++; else cart.push({ cat, name, price, qty: 1 }); updateCartBar(); }
   function getTotal() { return cart.reduce((s,i)=>s+i.price*i.qty,0); }
 
-  // ---- NEW: parcel charge calculator ----
+  // ---- PARCEL CHARGE CALCULATOR ----
+  // CHANGE: idli items now charge ₹5 per plate (per qty) instead of flat ₹5
   function calculateParcelCharge(items) {
     let parcel = 0;
-    let hasIdliVada = false;
     let hasCurdVada = false;
     const idliVadaNames = ["1 IDLY","2 IDLY","2 IDLY 1 VADA","1 IDLY 1 VADA","SINGLE VADA"];
     items.forEach(item => {
@@ -722,8 +727,7 @@
         } else if (item.name === "BISI BELE BATH" || item.name === "PONGAL") {
           unit = 10;
         } else if (idliVadaNames.includes(item.name)) {
-          unit = 0;
-          hasIdliVada = true;   // flat 5₹ handled later
+          unit = 5;   // ₹5 per plate (per qty)
         } else {
           unit = 5;   // rest of breakfast 5₹ per unit
         }
@@ -733,7 +737,6 @@
       parcel += unit * item.qty;
     });
     if (hasCurdVada) parcel += 5;
-    if (hasIdliVada) parcel += 5;
     return parcel;
   }
 
@@ -765,7 +768,8 @@
 
     let sub=getTotal();
     let parcel = calculateParcelCharge(cart);
-    let grand = sub + 30 + parcel;
+    // CHANGE: delivery charge removed from website bill — shown in WhatsApp only
+    let grand = sub + parcel;
 
     document.getElementById('modalSubtotal').textContent=sub;
     document.getElementById('modalParcel').textContent=parcel;
@@ -799,25 +803,50 @@
   document.getElementById('upiPaymentBtn').addEventListener('click',()=>{
     if(cart.length){
       let parcel = calculateParcelCharge(cart);
-      let total = getTotal() + 30 + parcel;
+      // CHANGE: delivery charge removed from UPI amount — shown in WhatsApp only
+      let total = getTotal() + parcel;
       window.location.href=`upi://pay?pa=9964054005@ybl&pn=Shree%20Srinidhi%20Upachar&am=${total}&cu=INR`;
     } else alert('Cart empty');
   });
 
-  let currentLat=null, currentLng=null, currentAddress="Not captured yet", googleMapsLink="";
+  // SHOP COORDINATES (Kollegal Bus Stand, Mysore Road)
+  const SHOP_LAT = 12.1528, SHOP_LNG = 77.1067;
+
+  // Haversine formula to calculate distance in km
+  function haversineDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371;
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+              Math.sin(dLon/2) * Math.sin(dLon/2);
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  }
+
+  // Distance-based delivery charge
+  function getDeliveryCharge(distKm) {
+    if (distKm < 2) return 30;
+    if (distKm <= 5) return 60;
+    return Math.round(distKm * 15);
+  }
+
+  let currentLat=null, currentLng=null, currentAddress="Not captured yet", googleMapsLink="", deliveryCharge=0, deliveryDistKm=0;
+
   document.getElementById('sendWhatsAppBtn').addEventListener('click',()=>{
     if(!cart.length) return alert('Cart empty');
     if(!currentLat){alert('Please capture your live location first.');return;}
 
     let sub = getTotal();
     let parcel = calculateParcelCharge(cart);
-    let grand = sub + 30 + parcel;
+    // CHANGE: distance-based delivery charge in WhatsApp message only
+    let grand = sub + parcel + deliveryCharge;
 
     let msg=`🍽️ *SHREE SRINIDHI UPACHAR* 🍽️\n📍 #10/3591, Opp. Bus Stand, Mysore Road, Kollegal\n\n*YOUR ORDER:*\n`;
     cart.forEach(i=>msg+=`• ${i.name} ×${i.qty} = ₹${i.price*i.qty}\n`);
     msg+=`\nSubtotal: ₹${sub}\n`;
     if (parcel > 0) msg += `Parcel Charge: ₹${parcel}\n`;
-    msg += `Delivery: ₹30\n*TOTAL: ₹${grand}*\n\n📍 *Delivery Address:* ${currentAddress}\n\n📍 *Live Location (Google Maps):* ${googleMapsLink}\n\n🙏 Thank you!`;
+    msg += `Delivery Charge (${deliveryDistKm.toFixed(1)} km): ₹${deliveryCharge}\n`;
+    msg += `*TOTAL: ₹${grand}*\n\n📍 *Delivery Address:* ${currentAddress}\n\n📍 *Live Location (Google Maps):* ${googleMapsLink}\n\n🙏 Thank you!`;
     window.open(`https://wa.me/919964054005?text=${encodeURIComponent(msg)}`,'_blank');
   });
 
@@ -828,6 +857,9 @@
     navigator.geolocation.getCurrentPosition(pos=>{
       currentLat=pos.coords.latitude; currentLng=pos.coords.longitude;
       googleMapsLink=`https://www.google.com/maps?q=${currentLat},${currentLng}`;
+      // CHANGE: calculate distance and delivery charge from shop
+      deliveryDistKm = haversineDistance(SHOP_LAT, SHOP_LNG, currentLat, currentLng);
+      deliveryCharge = getDeliveryCharge(deliveryDistKm);
       document.getElementById('locBtnText').textContent='Location Captured ✓';
       let mapDiv=document.getElementById('map');
       mapDiv.innerHTML=`<div class="map-placeholder" style="cursor:pointer;" onclick="window.open('${googleMapsLink}', '_blank')"><i class="fas fa-map-marker-alt" style="color:#c85f1a; font-size:2rem;"></i><p>📍 Tap to open Google Maps</p><small style="font-size:11px">${currentLat.toFixed(5)}, ${currentLng.toFixed(5)}</small></div>`;

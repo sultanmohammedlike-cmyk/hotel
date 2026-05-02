@@ -809,28 +809,7 @@
     } else alert('Cart empty');
   });
 
-  // SHOP COORDINATES (Kollegal Bus Stand, Mysore Road)
-  const SHOP_LAT = 12.1528, SHOP_LNG = 77.1067;
-
-  // Haversine formula to calculate distance in km
-  function haversineDistance(lat1, lon1, lat2, lon2) {
-    const R = 6371;
-    const dLat = (lat2 - lat1) * Math.PI / 180;
-    const dLon = (lon2 - lon1) * Math.PI / 180;
-    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-              Math.sin(dLon/2) * Math.sin(dLon/2);
-    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  }
-
-  // Distance-based delivery charge
-  function getDeliveryCharge(distKm) {
-    if (distKm < 2) return 30;
-    if (distKm <= 5) return 60;
-    return Math.round(distKm * 15);
-  }
-
-  let currentLat=null, currentLng=null, currentAddress="Not captured yet", googleMapsLink="", deliveryCharge=0, deliveryDistKm=0;
+  let currentLat=null, currentLng=null, currentAddress="Not captured yet", googleMapsLink="";
 
   document.getElementById('sendWhatsAppBtn').addEventListener('click',()=>{
     if(!cart.length) return alert('Cart empty');
@@ -838,15 +817,18 @@
 
     let sub = getTotal();
     let parcel = calculateParcelCharge(cart);
-    // CHANGE: distance-based delivery charge in WhatsApp message only
-    let grand = sub + parcel + deliveryCharge;
+    let grand = sub + parcel;
 
     let msg=`🍽️ *SHREE SRINIDHI UPACHAR* 🍽️\n📍 #10/3591, Opp. Bus Stand, Mysore Road, Kollegal\n\n*YOUR ORDER:*\n`;
     cart.forEach(i=>msg+=`• ${i.name} ×${i.qty} = ₹${i.price*i.qty}\n`);
     msg+=`\nSubtotal: ₹${sub}\n`;
     if (parcel > 0) msg += `Parcel Charge: ₹${parcel}\n`;
-    msg += `Delivery Charge (${deliveryDistKm.toFixed(1)} km): ₹${deliveryCharge}\n`;
-    msg += `*TOTAL: ₹${grand}*\n\n📍 *Delivery Address:* ${currentAddress}\n\n📍 *Live Location (Google Maps):* ${googleMapsLink}\n\n🙏 Thank you!`;
+    msg += `*TOTAL (excl. delivery): ₹${grand}*\n\n`;
+    msg += `🚚 *Delivery Charge (will be added):*\n`;
+    msg += `• Less than 2 km → ₹30\n`;
+    msg += `• 2 km to 5 km → ₹60\n`;
+    msg += `• Above 5 km → ₹15 per km\n\n`;
+    msg += `📍 *Delivery Address:* ${currentAddress}\n\n📍 *Live Location (Google Maps):* ${googleMapsLink}\n\n🙏 Thank you!`;
     window.open(`https://wa.me/919964054005?text=${encodeURIComponent(msg)}`,'_blank');
   });
 
@@ -857,9 +839,6 @@
     navigator.geolocation.getCurrentPosition(pos=>{
       currentLat=pos.coords.latitude; currentLng=pos.coords.longitude;
       googleMapsLink=`https://www.google.com/maps?q=${currentLat},${currentLng}`;
-      // CHANGE: calculate distance and delivery charge from shop
-      deliveryDistKm = haversineDistance(SHOP_LAT, SHOP_LNG, currentLat, currentLng);
-      deliveryCharge = getDeliveryCharge(deliveryDistKm);
       document.getElementById('locBtnText').textContent='Location Captured ✓';
       let mapDiv=document.getElementById('map');
       mapDiv.innerHTML=`<div class="map-placeholder" style="cursor:pointer;" onclick="window.open('${googleMapsLink}', '_blank')"><i class="fas fa-map-marker-alt" style="color:#c85f1a; font-size:2rem;"></i><p>📍 Tap to open Google Maps</p><small style="font-size:11px">${currentLat.toFixed(5)}, ${currentLng.toFixed(5)}</small></div>`;
